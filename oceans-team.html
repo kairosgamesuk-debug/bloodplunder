@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocean's Team - Blood & Plunder Skirmish Forces</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #333;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #ffb703;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #ddd;
+            margin-bottom: 5px;
+        }
+        
+        .faction-badge {
+            display: inline-block;
+            background: #8b0000;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav-tabs button {
+            padding: 12px 24px;
+            background: #1a1a2e;
+            color: #ffb703;
+            border: 2px solid #ffb703;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .nav-tabs button.active {
+            background: #ffb703;
+            color: #1a1a2e;
+        }
+        
+        .nav-tabs button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255,183,3,0.3);
+        }
+        
+        .tab-content {
+            display: none;
+            background: #f5f1e8;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .team-card {
+            background: #fff;
+            border-left: 5px solid #8b0000;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .team-name {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #8b0000;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .commander {
+            color: #ffb703;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-style: italic;
+            padding-left: 10px;
+            border-left: 3px solid #ffb703;
+        }
+        
+        .units {
+            margin-bottom: 20px;
+        }
+        
+        .unit {
+            background: #f9f9f9;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-left: 3px solid #ffb703;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 3px;
+        }
+        
+        .unit-name {
+            flex: 1;
+        }
+        
+        .unit-points {
+            background: #8b0000;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .points-summary {
+            background: #1a1a2e;
+            color: #ffb703;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .points-total {
+            font-size: 1.3em;
+        }
+        
+        .ship-section {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 2px solid #4a90a4;
+        }
+        
+        .ship-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #1a3a4a;
+            margin-bottom: 10px;
+        }
+        
+        .ship-details {
+            color: #2d5d6b;
+            line-height: 1.6;
+        }
+        
+        .lore {
+            background: #fff9e6;
+            padding: 15px;
+            border-left: 4px solid #ffb703;
+            margin-top: 15px;
+            border-radius: 3px;
+            font-style: italic;
+            color: #555;
+            font-size: 0.95em;
+        }
+        
+        .faction-info {
+            background: #fff;
+            border-left: 5px solid #8b0000;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+        
+        .faction-info h3 {
+            color: #8b0000;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .faction-info p {
+            margin-bottom: 10px;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .commander-list {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .commander-item {
+            padding: 12px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .commander-item:last-child {
+            border-bottom: none;
+        }
+        
+        .commander-title {
+            font-weight: bold;
+            color: #8b0000;
+        }
+        
+        .commander-desc {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .nav-tabs button {
+                width: 100%;
+            }
+            
+            .unit {
+                flex-wrap: wrap;
+            }
+            
+            .points-summary {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚓ Ocean's Team ⚓</h1>
+            <p class="subtitle">Blood & Plunder Skirmish Forces</p>
+            <div class="faction-badge">Unaligned Nations • Golden Age Pirates</div>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="tab-button active" onclick="switchTab('teams-100')">100pt Teams</button>
+            <button class="tab-button" onclick="switchTab('teams-200')">200pt Fleet</button>
+            <button class="tab-button" onclick="switchTab('commanders')">Commanders & Lore</button>
+            <button class="tab-button" onclick="switchTab('faction')">Faction Info</button>
+        </div>
+        
+        <!-- 100pt Teams Tab -->
+        <div id="teams-100" class="tab-content active">
+            <h2 style="color: #8b0000; margin-bottom: 25px;">Golden Age Pirates - 100 Point Skirmish Teams</h2>
+            
+            <div class="team-card">
+                <div class="team-name">⚔ Blackbeard's Raid</div>
+                <div class="commander">Commander: Edward "Blackbeard" Teach</div>
+                <div class="points-summary">
+                    <span>Force Special Rules:</span>
+                    <span style="color: #ffb703; font-weight: bold;">+2 to attacker determination; False Colors; Vendetta: Nationality</span>
+                </div>
+                <div class="units">
+                    <div class="unit">
+                        <div class="unit-name">Edward "Blackbeard" Teach - Commander</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pirates (core unit) x2</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Sea Dogs (core unit)</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">European Sailors (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Warrior Musketeers (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                </div>
+                <div class="lore">"Teach commands Queen Anne's Revenge with ruthless precision. +2 when attacking. Can fly false colors to deceive enemies. Feared on the Carolina coast."</div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-name">🏴 Calico Jack's Confederation</div>
+                <div class="commander">Commander: "Calico" Jack Rackham (with Anne Bonny & Mary Read)</div>
+                <div class="points-summary">
+                    <span>Force Special Rules:</span>
+                    <span style="color: #ffb703; font-weight: bold;">Shallow Draft ships; Ruthless special rule; False Colors</span>
+                </div>
+                <div class="units">
+                    <div class="unit">
+                        <div class="unit-name">"Calico" Jack Rackham - Commander</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pirates (core unit) x2</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Marins (core unit)</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Jamaican Privateers (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">African Warriors (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                </div>
+                <div class="lore">"Jack's crew from The Flying Gang—known for accepting women as equals in combat. Anne Bonny and Mary Read fought among the most vicious of his raiders. Shallow draft allows coastal ambushes."</div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-name">💀 Black Caesar's Corsairs</div>
+                <div class="commander">Commander: Black Caesar</div>
+                <div class="points-summary">
+                    <span>Force Special Rules:</span>
+                    <span style="color: #ffb703; font-weight: bold;">+4 to attacker determination; Ruthless; No size 3+ ships</span>
+                </div>
+                <div class="units">
+                    <div class="unit">
+                        <div class="unit-name">Black Caesar - Commander</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pirates (core unit) x2</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Sea Dogs (core unit)</div>
+                        <div class="unit-points">Core</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Warriors (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pressed Men (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                </div>
+                <div class="lore">"Escaped slave-turned-pirate, Caesar commanded crews off the Florida Keys. Gains +4 when determining attacker—masters of the ambush. All units gain Ruthless."</div>
+            </div>
+        </div>
+        
+        <!-- 200pt Fleet Tab -->
+        <div id="teams-200" class="tab-content">
+            <h2 style="color: #8b0000; margin-bottom: 25px;">The Grand Flotilla - 200 Points with Sloop Balandra</h2>
+            
+            <div class="team-card">
+                <div class="team-name">🚢 Blackbeard's Revenge Fleet</div>
+                <div class="commander">Flagship Commander: Edward "Blackbeard" Teach</div>
+                <div class="points-summary">
+                    <span>Force:</span>
+                    <span style="color: #ffb703;">BLACKBEARD'S MEN (1717-1718)</span>
+                </div>
+                <div class="units">
+                    <div class="unit">
+                        <div class="unit-name">Edward "Blackbeard" Teach - Commander</div>
+                        <div class="unit-points">Fleet Lead</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Sloop Balandra - "Queen Anne's Revenge"</div>
+                        <div class="unit-points">Flagship</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pirates (core unit) x3</div>
+                        <div class="unit-points">Core Units</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Roundsmen (core unit)</div>
+                        <div class="unit-points">Core Unit</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Sea Dogs (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Marins (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">European Sailors (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Jamaican Privateers (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                </div>
+                <div class="ship-section">
+                    <div class="ship-name">🚢 Sloop Balandra - "Queen Anne's Revenge"</div>
+                    <div class="ship-details">
+                        <strong>Historical Name:</strong> Queen Anne's Revenge (Blackbeard's flagship 1717-1718)<br>
+                        <strong>Ship Type:</strong> Sloop - Fast, maneuverable, shallow-draft vessel<br>
+                        <strong>Tactical Traits:</strong> Shallow Draft Ship; Superior sailing speed<br>
+                        <strong>Crew Size:</strong> 150-200 sailors and marines<br>
+                        <strong>Combat Role:</strong> Swift approach, boarding attacks, coastal ambushes<br>
+                        <strong>Black Sails Connection:</strong> Represents Flint's legendary vessel—fast enough to chase, cunning enough to escape
+                    </div>
+                </div>
+                <div class="lore">"The historic Queen Anne's Revenge under Blackbeard's command. Force grants +2 to attacker determination and gains Vendetta bonuses. Can fly false colors to deceive enemy vessels. All units gain the Ruthless special rule—a crew operating at the peak of pirate terror on the Atlantic seaboard."</div>
+            </div>
+            
+            <div class="team-card">
+                <div class="team-name">🏴 The Flying Gang Confederation</div>
+                <div class="commander">Fleet Command: "Calico" Jack Rackham (Anne Bonny, Mary Read)</div>
+                <div class="points-summary">
+                    <span>Force:</span>
+                    <span style="color: #ffb703;">THE FLYING GANG (1714-1717)</span>
+                </div>
+                <div class="units">
+                    <div class="unit">
+                        <div class="unit-name">"Calico" Jack Rackham - Commander</div>
+                        <div class="unit-points">Fleet Lead</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Sloop Balandra - "The Ranger"</div>
+                        <div class="unit-points">Flagship</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Sea Dogs (core unit) x2</div>
+                        <div class="unit-points">Core Units</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Jamaican Privateers (core unit)</div>
+                        <div class="unit-points">Core Unit</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pirates (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Marins (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">African Warriors (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                    <div class="unit">
+                        <div class="unit-name">Pressed Men (support)</div>
+                        <div class="unit-points">Support</div>
+                    </div>
+                </div>
+                <div class="ship-section">
+                    <div class="ship-name">🚢 Sloop Balandra - "The Ranger"</div>
+                    <div class="ship-details">
+                        <strong>Historical Name:</strong> The Ranger (Jack Rackham's flagship, captured 1720)<br>
+                        <strong>Distinctive Feature:</strong> Flew the "Jack" flag—black skull with two crossed cutlasses<br>
+                        <strong>Crew Innovation:</strong> First known pirate crew to accept women as full combat members<br>
+                        <strong>Tactical Style:</strong> Ruthless Trait; False Colors; Shallow Draft advantage<br>
+                        <strong>Black Sails Reference:</strong> Captain Jack (Calico Jack Rackham) commanded with brilliant tactical cunning and absolute crew loyalty
+                    </div>
+                </div>
+                <div class="lore">"The Flying Gang under Calico Jack Rackham. This force represents the revolution in pirate organization—Anne Bonny and Mary Read fought alongside men without discrimination, reportedly more vicious than most of their male counterparts. All ships in the force gain Shallow Draft; all units gain Ruthless. Can discard all Activation Cards once per game to refresh strategy. The only pirate crew in history to legally document female participation in combat operations."</div>
+            </div>
+        </div>
+        
+        <!-- Commanders Tab -->
+        <div id="commanders" class="tab-content">
+            <h2 style="color: #8b0000; margin-bottom: 25px;">Blood & Plunder Historical Commanders (1700-1730)</h2>
+            
+            <div class="commander-list">
+                <div class="commander-item">
+                    <div class="commander-title">🏴 Edward "Blackbeard" Teach (1680-1718)</div>
+                    <div class="commander-desc">
+                        <strong>Historical Command:</strong> Queen Anne's Revenge (1717-1718)<br>
+                        The most famous pirate of the Golden Age. Teach built his legend on psychology and terror—he famously braided slow-burning fuses into his beard during combat, creating a fearsome appearance. He was a skilled tactician who preferred negotiation and reputation to unnecessary violence; most targets surrendered at the sight of his flag. Hunted by Governor Spottswood of Virginia, he was killed in battle against pirate hunter Robert Maynard in 1718.<br>
+                        <strong>B&P Special Rules:</strong> Force gets +2 to attacker determination; can use false colors; grants Vendetta bonuses
+                    </div>
+                </div>
+                
+                <div class="commander-item">
+                    <div class="commander-title">⚔ John "Calico" Jack Rackham (1682-1718)</div>
+                    <div class="commander-desc">
+                        <strong>Historical Command:</strong> The Ranger (1718-1720)<br>
+                        A pragmatic captain known for accepting women as equals in his crew—Anne Bonny and Mary Read were full crew members, not disguises or stowaways. He designed the famous "Jack" flag: a black skull with two cutlasses crossed beneath it. Rackham emphasized tactics and cunning over brutality, capturing merchant vessels through superior seamanship rather than bloodshed. Captured and executed in Jamaica in 1720.<br>
+                        <strong>B&P Special Rules:</strong> Shallow Draft ships; Ruthless; all ships gain true Shallow Draft advantages
+                    </div>
+                </div>
+                
+                <div class="commander-item">
+                    <div class="commander-title">💀 Black Caesar (c.1700-1750)</div>
+                    <div class="commander-desc">
+                        <strong>Historical Background:</strong> Escaped slave who became one of the Caribbean's most feared pirate leaders<br>
+                        Born in Africa and enslaved, Caesar led a pirate confederation based in the Florida Keys. Unlike most pirate captains, Caesar led through democratic principles and loyalty rather than fear. His force was known for welcoming escaped slaves, creating a diverse crew united against slavery and oppression. He commanded shallow-draft vessels perfect for the Keys' waters.<br>
+                        <strong>B&P Special Rules:</strong> +4 to attacker determination; Ruthless; cannot use size 3+ ships (tactical choice); masters of ambush tactics
+                    </div>
+                </div>
+                
+                <div class="commander-item">
+                    <div class="commander-title">⚓ Anne Bonny & Mary Read (1697-1782 / 1685-1721)</div>
+                    <div class="commander-desc">
+                        <strong>Historical Record:</strong> Only documented female pirates of the Golden Age<br>
+                        Anne Bonny, daughter of an Irish attorney, disguised herself to join Calico Jack's crew. Mary Read also sailed disguised as a man. When authorities attacked their vessel, these two women were the only crew members to stand and fight—the male pirates fled below deck. Both were captured, convicted, and imprisoned. Bonny disappeared from historical record after her supposed pardon; Read died in prison of complications from illness. Their legacy represents resistance to gender norms and fearless combat ability.<br>
+                        <strong>B&P Connection:</strong> Flying Gang force represents a revolutionary crew structure where such differences were irrelevant to capability
+                    </div>
+                </div>
+                
+                <div class="commander-item">
+                    <div class="commander-title">🏴‍☠️ Other Available Commanders (B&P Rules)</div>
+                    <div class="commander-desc">
+                        <strong>Charles Vane</strong> - Brutal raid commander, known for indiscriminate attacks<br>
+                        <strong>Stede Bonnet</strong> - "Gentleman Pirate," educated captain with tactical sophistication<br>
+                        <strong>Olivier "La Buse" Levasseur</strong> - French pirate legendary for treasure hunts<br>
+                        <strong>Bartholomew "Black Bart" Roberts</strong> - Most successful pirate by vessel count, operating 1718-1722<br>
+                        <strong>Samuel "Black Sam" Bellamy</strong> - Charismatic captain, legendary for speed and successful captures<br>
+                        <strong>Benjamin Hornigold</strong> - Mentor to Blackbeard, pragmatic and strategic
+                    </div>
+                </div>
+                
+                <div class="commander-item">
+                    <div class="commander-title">Black Sails TV Series Connection</div>
+                    <div class="commander-desc">
+                        <strong>Inspired by History, Elevated by Fiction:</strong> The TV series "Black Sails" (2014-2018) reimagined Golden Age pirates as complex, morally ambiguous figures fighting against empires, slavery, and oppression. Characters like Captain Flint embody strategic genius; Anne Bonny and Jack Rackham become revolutionary figures.<br>
+                        <strong>For Ocean's Teams:</strong> These commanders represent not mere raiders, but agents of disruption against colonial power. Their forces operate with intelligence, cunning, and a code of honor among thieves. They're freedom fighters in an age of tyranny, using the chaos of piracy to challenge established hierarchies.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Faction Info Tab -->
+        <div id="faction" class="tab-content">
+            <div class="faction-info">
+                <h3>🏴 Blood & Plunder: Unaligned Pirate Forces (1700-1730)</h3>
+                <p><strong>Core Philosophy:</strong> Pirates in Blood & Plunder operate outside national boundaries, serving no king or nation. They represent escaped slaves, bankrupt sailors, ideological rebels, and career criminals united by opportunity and necessity.</p>
+                
+                <p><strong>Available Forces:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Golden Age Pirates</strong> - General pirate force, flexible command options</li>
+                    <li><strong>Blackbeard's Men</strong> - +2 attacker; False Colors; Vendetta abilities</li>
+                    <li><strong>The Flying Gang</strong> - Shallow Draft; Ruthless; Card refresh mechanic</li>
+                    <li><strong>Caesar's Men</strong> - +4 attacker determination; Cannot use large ships; Amphibious superiority</li>
+                    <li><strong>The Last Buccaneers</strong> - Mixed multinational command options</li>
+                    <li><strong>Baymen</strong> - Defensive drunk rule; Elusive units; Size 3 ships maximum</li>
+                </ul>
+                
+                <p><strong>Unit Composition:</strong> Core units typically include Pirates, Sea Dogs, and Marins. Support units draw from diverse sources: European Sailors, Jamaican Privateers, African Warriors, Later Flibustiers, Warrior Musketeers, and Pressed Men. This diversity reflects the multinational, multiracial nature of pirate crews.</p>
+            </div>
+            
+            <div class="faction-info">
+                <h3>⚓ Pirate Special Rules & Tactics</h3>
+                <p><strong>Ruthless:</strong> Pirate crews operate without mercy or convention. This rule reflects their willingness to use extreme tactics.</p>
+                
+                <p><strong>Shallow Draft Ships:</strong> Pirates favor small vessels like sloops and brigantines that can navigate coastal waters and rivers unavailable to naval forces. The Balandra exemplifies this advantage.</p>
+                
+                <p><strong>False Colors:</strong> Pirates can fly false flags to deceive enemies. At the start of each turn, roll d10: on 7+, the deception fails; otherwise, enemies cannot attack this turn unless the pirate force initiates combat.</p>
+                
+                <p><strong>Attacker Determination Bonuses:</strong> Different pirate forces gain +1 to +4 to their attack rolls in scenarios, reflecting their predatory nature and superior knowledge of hunting merchant vessels.</p>
+                
+                <p><strong>Force-Specific Mechanics:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Blackbeard's Men:</strong> Vendetta (extra damage vs. specific nationalities); +2 attacker bonus</li>
+                    <li><strong>Flying Gang:</strong> Can discard all Activation Cards once per game to refresh strategy</li>
+                    <li><strong>Caesar's Men:</strong> Maximum +4 attacker determination; exclusive amphibious advantages</li>
+                </ul>
+            </div>
+            
+            <div class="faction-info">
+                <h3>🚢 The Sloop Balandra - Pirate Perfection</h3>
+                <p><strong>Ship Type:</strong> Small, fast, maneuverable sailing vessel (30-50 tons)</p>
+                
+                <p><strong>Historical Examples:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li>Queen Anne's Revenge (Blackbeard's flagship 1717-1718)</li>
+                    <li>The Ranger (Calico Jack Rackham's command 1718-1720)</li>
+                    <li>Various unnamed sloops used by Caesar and other pirate confederations</li>
+                </ul>
+                
+                <p><strong>Tactical Advantages:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Speed:</strong> Can rapidly approach or disengage from combat</li>
+                    <li><strong>Shallow Draft:</strong> Navigates rivers, bays, and coastal waters where military ships cannot follow</li>
+                    <li><strong>Crew Capacity:</strong> 100-150 persons; high crew-to-tonnage ratio for boarding operations</li>
+                    <li><strong>Cargo Flexibility:</strong> Can carry plunder from multiple vessels simultaneously</li>
+                    <li><strong>Minimal Armament:</strong> 4-8 cannons; relies on speed and boarding rather than broadside artillery</li>
+                </ul>
+                
+                <p><strong>Role in Ocean's Teams:</strong> In 200-point forces, the Balandra serves as command platform, mobile fire support, and deployment base. Commanders often remain aboard vessel during combat, using deck crew and boarding parties for tactical control.</p>
+            </div>
+            
+            <div class="faction-info">
+                <h3>🎭 Pirate Crew Composition & Diversity</h3>
+                <p><strong>Why Piracy Attracted Diverse Recruits:</strong></p>
+                <ul style="margin-left: 20px; margin-bottom: 15px;">
+                    <li><strong>Escaped Slaves:</strong> African Warriors and later military personnel. Pirates offered freedom and share in plunder</li>
+                    <li><strong>Pressed Sailors:</strong> Forced into naval service, many deserted to pirate crews offering democratic vote</li>
+                    <li><strong>Runaway Soldiers:</strong> Deserters from failed military operations found acceptance among pirates</li>
+                    <li><strong>Indigenous Peoples:</strong> Some pirate crews included Native Americans operating in their own waters</li>
+                    <li><strong>Economic Migrants:</strong> Landless Europeans seeking fortune without nation-state oversight</li>
+                </ul>
+                
+                <p><strong>This diversity is reflected in Blood & Plunder unit availability:</strong> Pirates can include European Sailors, African Warriors, Jamaican Privateers (mixed race crews), Native American warriors, and mercenary specialists. This represents the truly multicultural nature of historical pirate operations.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function switchTab(tabName) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>
