@@ -291,106 +291,100 @@
             <button class="tab-button" onclick="switchTab('teams-200')">200pt Fleet</button>
             <button class="tab-button" onclick="switchTab('commanders')">Commanders & Lore</button>
             <button class="tab-button" onclick="switchTab('faction')">Faction Info</button>
+            <button class="tab-button" onclick="switchTab('build')">📄 Example Build</button>
         </div>
         
         <!-- 100pt Teams Tab -->
         <div id="teams-100" class="tab-content active">
-            <h2 style="color: #8b0000; margin-bottom: 25px;">Golden Age Pirates - 100 Point Skirmish Teams</h2>
+            <h2 style="color: #8b0000; margin-bottom: 20px;">🎲 Blood & Plunder 100 Point Skirmish Teams</h2>
             
-            <div class="team-card">
-                <div class="team-name">⚔ Blackbeard's Raid</div>
-                <div class="commander">Commander: Edward "Blackbeard" Teach</div>
-                <div class="points-summary">
-                    <span>Force Special Rules:</span>
-                    <span style="color: #ffb703; font-weight: bold;">+2 to attacker determination; False Colors; Vendetta: Nationality</span>
-                </div>
-                <div class="units">
-                    <div class="unit">
-                        <div class="unit-name">Edward "Blackbeard" Teach - Commander</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Pirates (core unit) x2</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Sea Dogs (core unit)</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">European Sailors (support)</div>
-                        <div class="unit-points">Support</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Warrior Musketeers (support)</div>
-                        <div class="unit-points">Support</div>
-                    </div>
-                </div>
-                <div class="lore">"Teach commands Queen Anne's Revenge with ruthless precision. +2 when attacking. Can fly false colors to deceive enemies. Feared on the Carolina coast."</div>
+            <div style="background: #1a1a2e; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 2px solid #ffb703; text-align: center;">
+                <p style="color: #ffb703; font-weight: bold; margin: 0; font-size: 1.1em;">📋 Build Your Own Force at:</p>
+                <a href="https://forcebuilder.bloodandplunder.com" target="_blank" style="color: #ffd700; font-size: 1.2em; text-decoration: none; font-weight: bold;">⚓ Blood & Plunder Force Builder ⚓</a>
+                <p style="color: #aaa; margin: 10px 0 0; font-size: 0.95em;">Configure units, test point calculations, and perfect your lineup</p>
             </div>
             
             <div class="team-card">
-                <div class="team-name">🏴 Calico Jack's Confederation</div>
-                <div class="commander">Commander: "Calico" Jack Rackham (with Anne Bonny & Mary Read)</div>
-                <div class="points-summary">
-                    <span>Force Special Rules:</span>
-                    <span style="color: #ffb703; font-weight: bold;">Shallow Draft ships; Ruthless special rule; False Colors</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+                    <div>
+                        <div class="team-name">⚔ Blackbeard's Men</div>
+                        <div class="commander">Commander: Edward "Blackbeard" Teach (1717-1718)</div>
+                        <div style="background: rgba(255,183,3,0.1); padding: 12px; border-radius: 5px; margin: 15px 0; border-left: 3px solid #ffb703;">
+                            <strong style="color: #ffb703;">Force Special Rules:</strong><br>
+                            <span style="color: #333; font-size: 0.95em;">• +2 to attacker determination<br>• False Colors (deception)<br>• Vendetta: Nationality bonus<br>• Activation Card refresh (once/game)</span>
+                        </div>
+                        
+                        <div style="background: rgba(50,50,80,0.8); padding: 15px; border-radius: 5px; margin: 15px 0; color: #fff;">
+                            <strong style="color: #ffb703; display: block; margin-bottom: 10px;">Point Breakdown (100 pts)</strong>
+                            
+                            <div style="color: #ddd; font-size: 0.95em; line-height: 1.8;">
+                                <strong style="color: #fff;">CORE UNITS:</strong><br>
+                                • Edward Teach (Commander) = <span style="color: #ffb703;">25 pts</span><br>
+                                • Pirates x2 @ 12 pts each = <span style="color: #ffb703;">24 pts</span><br>
+                                • Roundsmen x1 = <span style="color: #ffb703;">14 pts</span><br>
+                                <strong style="color: #fff; margin-top: 10px; display: block;">SUPPORT UNITS:</strong><br>
+                                • Sea Dogs x1 = <span style="color: #ffb703;">12 pts</span><br>
+                                • Marins x1 = <span style="color: #ffb703;">9 pts</span><br>
+                                • European Sailors x1 = <span style="color: #ffb703;">8 pts</span><br>
+                                • Jamaican Privateers x1 = <span style="color: #ffb703;">8 pts</span><br>
+                                <hr style="border: none; border-top: 1px solid #666; margin: 10px 0;">
+                                <strong style="color: #ffb703; font-size: 1.1em;">TOTAL = 100 pts</strong>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(139,69,19,0.2); padding: 12px; border-radius: 5px; border-left: 3px solid #ffd700;">
+                            <strong style="color: #333;">Equipment:</strong><br>
+                            <span style="color: #555; font-size: 0.9em;">Muskets, pistols, cutlasses, light armor. Blackbeard armed his crew with whatever was captured—no uniform loadout.</span>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <img src="./Blackbeard.png" alt="Blackbeard's Men Faction Card" style="width: 100%; border-radius: 8px; box-shadow: 0 0 20px rgba(255,215,0,0.3); border: 2px solid #ffb703;">
+                        <p style="color: #666; font-size: 0.85em; margin-top: 10px;">Blackbeard's Men (1717-1718)<br>Queen Anne's Revenge</p>
+                    </div>
                 </div>
-                <div class="units">
-                    <div class="unit">
-                        <div class="unit-name">"Calico" Jack Rackham - Commander</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Pirates (core unit) x2</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Marins (core unit)</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Jamaican Privateers (support)</div>
-                        <div class="unit-points">Support</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">African Warriors (support)</div>
-                        <div class="unit-points">Support</div>
-                    </div>
-                </div>
-                <div class="lore">"Jack's crew from The Flying Gang—known for accepting women as equals in combat. Anne Bonny and Mary Read fought among the most vicious of his raiders. Shallow draft allows coastal ambushes."</div>
             </div>
             
             <div class="team-card">
-                <div class="team-name">💀 Black Caesar's Corsairs</div>
-                <div class="commander">Commander: Black Caesar</div>
-                <div class="points-summary">
-                    <span>Force Special Rules:</span>
-                    <span style="color: #ffb703; font-weight: bold;">+4 to attacker determination; Ruthless; No size 3+ ships</span>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+                    <div>
+                        <div class="team-name">🏴 The Flying Gang</div>
+                        <div class="commander">Commander: "Calico" Jack Rackham (1714-1717)</div>
+                        <div style="background: rgba(255,183,3,0.1); padding: 12px; border-radius: 5px; margin: 15px 0; border-left: 3px solid #ffb703;">
+                            <strong style="color: #ffb703;">Force Special Rules:</strong><br>
+                            <span style="color: #333; font-size: 0.95em;">• Shallow Draft Ship Trait<br>• Ruthless (all units)<br>• Discard Activation Cards (once/game)<br>• False Colors available</span>
+                        </div>
+                        
+                        <div style="background: rgba(50,50,80,0.8); padding: 15px; border-radius: 5px; margin: 15px 0; color: #fff;">
+                            <strong style="color: #ffb703; display: block; margin-bottom: 10px;">Point Breakdown (100 pts)</strong>
+                            
+                            <div style="color: #ddd; font-size: 0.95em; line-height: 1.8;">
+                                <strong style="color: #fff;">CORE UNITS:</strong><br>
+                                • Calico Jack (Commander) = <span style="color: #ffb703;">22 pts</span><br>
+                                • Sea Dogs x2 @ 12 pts each = <span style="color: #ffb703;">24 pts</span><br>
+                                • Jamaican Privateers x1 = <span style="color: #ffb703;">11 pts</span><br>
+                                <strong style="color: #fff; margin-top: 10px; display: block;">SUPPORT UNITS:</strong><br>
+                                • Pirates x1 = <span style="color: #ffb703;">12 pts</span><br>
+                                • Marins x1 = <span style="color: #ffb703;">9 pts</span><br>
+                                • African Warriors x1 = <span style="color: #ffb703;">8 pts</span><br>
+                                • Zeelichien x1 = <span style="color: #ffb703;">8 pts</span><br>
+                                • Pressed Men x1 = <span style="color: #ffb703;">6 pts</span><br>
+                                <hr style="border: none; border-top: 1px solid #666; margin: 10px 0;">
+                                <strong style="color: #ffb703; font-size: 1.1em;">TOTAL = 100 pts</strong>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(139,69,19,0.2); padding: 12px; border-radius: 5px; border-left: 3px solid #ffd700;">
+                            <strong style="color: #333;">Notable Members:</strong><br>
+                            <span style="color: #555; font-size: 0.9em;">Anne Bonny & Mary Read fought as equals. First pirate crew to accept women in full combat roles.</span>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <img src="./GoldenAge.png" alt="Golden Age Pirates Faction Card" style="width: 100%; border-radius: 8px; box-shadow: 0 0 20px rgba(255,215,0,0.3); border: 2px solid #ffb703;">
+                        <p style="color: #666; font-size: 0.85em; margin-top: 10px;">Golden Age Pirates (1700-1730)<br>The Flying Gang faction</p>
+                    </div>
                 </div>
-                <div class="units">
-                    <div class="unit">
-                        <div class="unit-name">Black Caesar - Commander</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Pirates (core unit) x2</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Sea Dogs (core unit)</div>
-                        <div class="unit-points">Core</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Warriors (support)</div>
-                        <div class="unit-points">Support</div>
-                    </div>
-                    <div class="unit">
-                        <div class="unit-name">Pressed Men (support)</div>
-                        <div class="unit-points">Support</div>
-                    </div>
-                </div>
-                <div class="lore">"Escaped slave-turned-pirate, Caesar commanded crews off the Florida Keys. Gains +4 when determining attacker—masters of the ambush. All units gain Ruthless."</div>
             </div>
         </div>
         
@@ -643,6 +637,32 @@
                 </ul>
                 
                 <p><strong>This diversity is reflected in Blood & Plunder unit availability:</strong> Pirates can include European Sailors, African Warriors, Jamaican Privateers (mixed race crews), Native American warriors, and mercenary specialists. This represents the truly multicultural nature of historical pirate operations.</p>
+            </div>
+        </div>
+        
+        <!-- Example Build Tab -->
+        <div id="build" class="tab-content">
+            <h2 style="color: #8b0000; margin-bottom: 25px;">📄 Example Force Build - Ocean's Team</h2>
+            
+            <div style="background: rgba(255,183,3,0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #ffb703;">
+                <p style="color: #333; margin: 0; line-height: 1.8;">
+                    <strong style="color: #8b0000;">Force Builder Export:</strong> 100 Points / 100 | 18 models (Strike point at 4/8/12)<br>
+                    <strong style="color: #8b0000;">Commander:</strong> Experienced English Buccaneer<br>
+                    <strong style="color: #8b0000;">Faction:</strong> Unaligned & Peripheral Powers (Oceans Team - 5d71f983)<br>
+                    <strong style="color: #8b0000;">Main Weapons:</strong> Pistols, Standard Melee Weapons
+                </p>
+            </div>
+            
+            <iframe src="./Oceans_Team.pdf" style="width: 100%; height: 800px; border: 2px solid #ffb703; border-radius: 8px;" title="Force Builder Export - Ocean's Team"></iframe>
+            
+            <div style="background: #fff; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #8b0000;">
+                <h3 style="color: #8b0000; margin-top: 0;">About This Build</h3>
+                <p style="color: #333; line-height: 1.8;">
+                    This example force was generated using the <a href="https://forcebuilder.bloodandplunder.com" target="_blank" style="color: #ffb703; text-decoration: none; font-weight: bold;">Blood & Plunder Force Builder</a>. It showcases a balanced 100-point pirate force built around an Experienced English Buccaneer Commander with support from diverse crew types including Filibusters, Marins, Sea Dogs, and Artillery specialists.
+                </p>
+                <p style="color: #333; line-height: 1.8;">
+                    This is just one example configuration. Use the Force Builder to create your own custom builds, test different unit combinations, and optimize your forces for your playstyle and preferred tactics.
+                </p>
             </div>
         </div>
     </div>
