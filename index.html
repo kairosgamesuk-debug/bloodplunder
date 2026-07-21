@@ -4,32 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ocean's Team - Blood & Plunder Skirmish Forces</title>
+
+    <meta property="og:image" content="./Blackbeard.png">
+    <meta property="og:title" content="Ocean's Team - Blood & Plunder">
+    <meta property="og:description" content="Golden Age Pirate Skirmish Forces">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Trebuchet MS', sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #333;
             padding: 20px;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-        
+
         header {
             text-align: center;
             color: #fff;
             margin-bottom: 40px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        
+
         h1 {
             font-size: 3em;
             margin-bottom: 10px;
@@ -38,13 +43,13 @@
             text-transform: uppercase;
             letter-spacing: 2px;
         }
-        
+
         .subtitle {
             font-size: 1.2em;
             color: #ddd;
             margin-bottom: 5px;
         }
-        
+
         .faction-badge {
             display: inline-block;
             background: #8b0000;
@@ -54,7 +59,7 @@
             margin-top: 10px;
             font-weight: bold;
         }
-        
+
         .nav-tabs {
             display: flex;
             gap: 10px;
@@ -62,8 +67,9 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-        
-        .nav-tabs button {
+
+        .nav-tabs button,
+        .nav-tabs a.tab-link {
             padding: 12px 24px;
             background: #1a1a2e;
             color: #ffb703;
@@ -74,17 +80,25 @@
             transition: all 0.3s;
             font-weight: bold;
         }
-        
+
+        .nav-tabs a.tab-link {
+            text-decoration: none;
+            font-family: inherit;
+            display: inline-block;
+            line-height: normal;
+        }
+
         .nav-tabs button.active {
             background: #ffb703;
             color: #1a1a2e;
         }
-        
-        .nav-tabs button:hover {
+
+        .nav-tabs button:hover,
+        .nav-tabs a.tab-link:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(255,183,3,0.3);
         }
-        
+
         .tab-content {
             display: none;
             background: #f5f1e8;
@@ -92,17 +106,17 @@
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        
+
         .tab-content.active {
             display: block;
             animation: fadeIn 0.3s;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         .team-card {
             background: #fff;
             border-left: 5px solid #8b0000;
@@ -111,7 +125,7 @@
             border-radius: 5px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
-        
+
         .team-name {
             font-size: 1.4em;
             font-weight: bold;
@@ -121,7 +135,7 @@
             align-items: center;
             gap: 10px;
         }
-        
+
         .commander {
             color: #ffb703;
             font-weight: bold;
@@ -130,11 +144,11 @@
             padding-left: 10px;
             border-left: 3px solid #ffb703;
         }
-        
+
         .units {
             margin-bottom: 20px;
         }
-        
+
         .unit {
             background: #f9f9f9;
             padding: 12px;
@@ -145,11 +159,11 @@
             align-items: center;
             border-radius: 3px;
         }
-        
+
         .unit-name {
             flex: 1;
         }
-        
+
         .unit-points {
             background: #8b0000;
             color: #fff;
@@ -159,7 +173,7 @@
             min-width: 50px;
             text-align: center;
         }
-        
+
         .points-summary {
             background: #1a1a2e;
             color: #ffb703;
@@ -171,11 +185,11 @@
             font-weight: bold;
             margin-bottom: 20px;
         }
-        
+
         .points-total {
             font-size: 1.3em;
         }
-        
+
         .ship-section {
             background: #e8f4f8;
             padding: 20px;
@@ -183,19 +197,19 @@
             margin-top: 20px;
             border: 2px solid #4a90a4;
         }
-        
+
         .ship-name {
             font-size: 1.2em;
             font-weight: bold;
             color: #1a3a4a;
             margin-bottom: 10px;
         }
-        
+
         .ship-details {
             color: #2d5d6b;
             line-height: 1.6;
         }
-        
+
         .lore {
             background: #fff9e6;
             padding: 15px;
@@ -206,7 +220,7 @@
             color: #555;
             font-size: 0.95em;
         }
-        
+
         .faction-info {
             background: #fff;
             border-left: 5px solid #8b0000;
@@ -214,67 +228,65 @@
             margin-bottom: 25px;
             border-radius: 5px;
         }
-        
+
         .faction-info h3 {
             color: #8b0000;
             margin-bottom: 15px;
             font-size: 1.2em;
         }
-        
+
         .faction-info p {
             margin-bottom: 10px;
             line-height: 1.6;
             color: #333;
         }
-        
+
         .commander-list {
             background: #f9f9f9;
             padding: 20px;
             border-radius: 5px;
             margin-top: 20px;
         }
-        
+
         .commander-item {
             padding: 12px 0;
             border-bottom: 1px solid #ddd;
         }
-        
+
         .commander-item:last-child {
             border-bottom: none;
         }
-        
+
         .commander-title {
             font-weight: bold;
             color: #8b0000;
         }
-        
+
         .commander-desc {
             color: #666;
             font-size: 0.95em;
             margin-top: 5px;
         }
 
-        <meta property="og:image" content="./Blackbeard.png">
-        <meta property="og:title" content="Ocean's Team - Blood & Plunder">
-        <meta property="og:description" content="Golden Age Pirate Skirmish Forces">
-        
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
             }
-            
+
             .nav-tabs {
                 flex-direction: column;
             }
-            
-            .nav-tabs button {
+
+            .nav-tabs button,
+            .nav-tabs a.tab-link {
                 width: 100%;
+                text-align: center;
             }
-            
+
             .unit {
                 flex-wrap: wrap;
             }
-            
+
             .points-summary {
                 flex-direction: column;
                 gap: 10px;
@@ -289,29 +301,30 @@
             <p class="subtitle">Blood & Plunder Skirmish Forces</p>
             <div class="faction-badge">Unaligned Nations • Golden Age Pirates</div>
         </header>
-        
+
         <div class="nav-tabs">
-            <button class="tab-button active" onclick="switchTab('teams-100')">100pt Teams</button>
-            <button class="tab-button" onclick="switchTab('teams-200')">200pt Fleet</button>
-            <button class="tab-button" onclick="switchTab('commanders')">Commanders & Lore</button>
-            <button class="tab-button" onclick="switchTab('faction')">Faction Info</button>
-            <button class="tab-button" onclick="switchTab('build')">📄 Example Build</button>
+            <button class="tab-button active" onclick="switchTab(event,'teams-100')">100pt Teams</button>
+            <button class="tab-button" onclick="switchTab(event,'teams-200')">200pt Fleet</button>
+            <button class="tab-button" onclick="switchTab(event,'commanders')">Commanders & Lore</button>
+            <button class="tab-button" onclick="switchTab(event,'faction')">Faction Info</button>
+            <button class="tab-button" onclick="switchTab(event,'build')">📄 Example Build</button>
+            <a class="tab-link" href="scenarios.html">⚔ Free Scenarios ⚔</a>
         </div>
-        
+
         <!-- 100pt Teams Tab -->
         <div id="teams-100" class="tab-content active">
             <h2 style="color: #8b0000; margin-bottom: 20px;">🎲 Blood & Plunder 100 Point Skirmish Teams</h2>
-            
+
             <div style="background: #1a1a2e; padding: 20px; border-radius: 8px; margin-bottom: 30px; border: 2px solid #ffb703; text-align: center;">
                 <p style="color: #ffb703; font-weight: bold; margin: 0; font-size: 1.1em;">📋 Build Your Own Force at:</p>
                 <a href="https://forcebuilder.bloodandplunder.com" target="_blank" style="color: #ffd700; font-size: 1.2em; text-decoration: none; font-weight: bold;">⚓ Blood & Plunder Force Builder ⚓</a>
                 <p style="color: #aaa; margin: 10px 0 0; font-size: 0.95em;">Configure units, test point calculations, and perfect your lineup</p>
             </div>
-            
+
             <a href="https://forcebuilder.bloodandplunder.com" target="_blank" style="display: inline-block; padding: 12px 24px; background: #ffb703; color: #1a1a2e; text-decoration: none; border-radius: 5px; font-weight: bold; margin: 20px 0;">
                 ⚓ Force Builder ⚓
             </a>
-            
+
             <div class="team-card">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
                     <div>
@@ -321,10 +334,10 @@
                             <strong style="color: #ffb703;">Force Special Rules:</strong><br>
                             <span style="color: #333; font-size: 0.95em;">• +2 to attacker determination<br>• False Colors (deception)<br>• Vendetta: Nationality bonus<br>• Activation Card refresh (once/game)</span>
                         </div>
-                        
+
                         <div style="background: rgba(50,50,80,0.8); padding: 15px; border-radius: 5px; margin: 15px 0; color: #fff;">
                             <strong style="color: #ffb703; display: block; margin-bottom: 10px;">Point Breakdown (100 pts)</strong>
-                            
+
                             <div style="color: #ddd; font-size: 0.95em; line-height: 1.8;">
                                 <strong style="color: #fff;">CORE UNITS:</strong><br>
                                 • Edward Teach (Commander) = <span style="color: #ffb703;">25 pts</span><br>
@@ -339,20 +352,20 @@
                                 <strong style="color: #ffb703; font-size: 1.1em;">TOTAL = 100 pts</strong>
                             </div>
                         </div>
-                        
+
                         <div style="background: rgba(139,69,19,0.2); padding: 12px; border-radius: 5px; border-left: 3px solid #ffd700;">
                             <strong style="color: #333;">Equipment:</strong><br>
                             <span style="color: #555; font-size: 0.9em;">Muskets, pistols, cutlasses, light armor. Blackbeard armed his crew with whatever was captured—no uniform loadout.</span>
                         </div>
                     </div>
-                    
+
                     <div style="text-align: center;">
                         <img src="./Blackbeard.png" alt="Blackbeard's Men Faction Card" style="width: 100%; border-radius: 8px; box-shadow: 0 0 20px rgba(255,215,0,0.3); border: 2px solid #ffb703;">
                         <p style="color: #666; font-size: 0.85em; margin-top: 10px;">Blackbeard's Men (1717-1718)<br>Queen Anne's Revenge</p>
                     </div>
                 </div>
             </div>
-            
+
             <div class="team-card">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
                     <div>
@@ -362,10 +375,10 @@
                             <strong style="color: #ffb703;">Force Special Rules:</strong><br>
                             <span style="color: #333; font-size: 0.95em;">• Shallow Draft Ship Trait<br>• Ruthless (all units)<br>• Discard Activation Cards (once/game)<br>• False Colors available</span>
                         </div>
-                        
+
                         <div style="background: rgba(50,50,80,0.8); padding: 15px; border-radius: 5px; margin: 15px 0; color: #fff;">
                             <strong style="color: #ffb703; display: block; margin-bottom: 10px;">Point Breakdown (100 pts)</strong>
-                            
+
                             <div style="color: #ddd; font-size: 0.95em; line-height: 1.8;">
                                 <strong style="color: #fff;">CORE UNITS:</strong><br>
                                 • Calico Jack (Commander) = <span style="color: #ffb703;">22 pts</span><br>
@@ -381,13 +394,13 @@
                                 <strong style="color: #ffb703; font-size: 1.1em;">TOTAL = 100 pts</strong>
                             </div>
                         </div>
-                        
+
                         <div style="background: rgba(139,69,19,0.2); padding: 12px; border-radius: 5px; border-left: 3px solid #ffd700;">
                             <strong style="color: #333;">Notable Members:</strong><br>
                             <span style="color: #555; font-size: 0.9em;">Anne Bonny & Mary Read fought as equals. First pirate crew to accept women in full combat roles.</span>
                         </div>
                     </div>
-                    
+
                     <div style="text-align: center;">
                         <img src="./GoldenAge.png" alt="Golden Age Pirates Faction Card" style="width: 100%; border-radius: 8px; box-shadow: 0 0 20px rgba(255,215,0,0.3); border: 2px solid #ffb703;">
                         <p style="color: #666; font-size: 0.85em; margin-top: 10px;">Golden Age Pirates (1700-1730)<br>The Flying Gang faction</p>
@@ -395,11 +408,11 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- 200pt Fleet Tab -->
         <div id="teams-200" class="tab-content">
             <h2 style="color: #8b0000; margin-bottom: 25px;">The Grand Flotilla - 200 Points with Sloop Balandra</h2>
-            
+
             <div class="team-card">
                 <div class="team-name">🚢 Blackbeard's Revenge Fleet</div>
                 <div class="commander">Flagship Commander: Edward "Blackbeard" Teach</div>
@@ -509,11 +522,11 @@
                 <div class="lore">"The Flying Gang under Calico Jack Rackham. This force represents the revolution in pirate organization—Anne Bonny and Mary Read fought alongside men without discrimination, reportedly more vicious than most of their male counterparts. All ships in the force gain Shallow Draft; all units gain Ruthless. Can discard all Activation Cards once per game to refresh strategy. The only pirate crew in history to legally document female participation in combat operations."</div>
             </div>
         </div>
-        
+
         <!-- Commanders Tab -->
         <div id="commanders" class="tab-content">
             <h2 style="color: #8b0000; margin-bottom: 25px;">Blood & Plunder Historical Commanders (1700-1730)</h2>
-            
+
             <div class="commander-list">
                 <div class="commander-item">
                     <div class="commander-title">🏴 Edward "Blackbeard" Teach (1680-1718)</div>
@@ -523,7 +536,7 @@
                         <strong>B&P Special Rules:</strong> Force gets +2 to attacker determination; can use false colors; grants Vendetta bonuses
                     </div>
                 </div>
-                
+
                 <div class="commander-item">
                     <div class="commander-title">⚔ John "Calico" Jack Rackham (1682-1718)</div>
                     <div class="commander-desc">
@@ -532,7 +545,7 @@
                         <strong>B&P Special Rules:</strong> Shallow Draft ships; Ruthless; all ships gain true Shallow Draft advantages
                     </div>
                 </div>
-                
+
                 <div class="commander-item">
                     <div class="commander-title">💀 Black Caesar (c.1700-1750)</div>
                     <div class="commander-desc">
@@ -541,7 +554,7 @@
                         <strong>B&P Special Rules:</strong> +4 to attacker determination; Ruthless; cannot use size 3+ ships (tactical choice); masters of ambush tactics
                     </div>
                 </div>
-                
+
                 <div class="commander-item">
                     <div class="commander-title">⚓ Anne Bonny & Mary Read (1697-1782 / 1685-1721)</div>
                     <div class="commander-desc">
@@ -550,7 +563,7 @@
                         <strong>B&P Connection:</strong> Flying Gang force represents a revolutionary crew structure where such differences were irrelevant to capability
                     </div>
                 </div>
-                
+
                 <div class="commander-item">
                     <div class="commander-title">🏴‍☠️ Other Available Commanders (B&P Rules)</div>
                     <div class="commander-desc">
@@ -562,7 +575,7 @@
                         <strong>Benjamin Hornigold</strong> - Mentor to Blackbeard, pragmatic and strategic
                     </div>
                 </div>
-                
+
                 <div class="commander-item">
                     <div class="commander-title">Black Sails TV Series Connection</div>
                     <div class="commander-desc">
@@ -572,13 +585,13 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Faction Info Tab -->
         <div id="faction" class="tab-content">
             <div class="faction-info">
                 <h3>🏴 Blood & Plunder: Unaligned Pirate Forces (1700-1730)</h3>
                 <p><strong>Core Philosophy:</strong> Pirates in Blood & Plunder operate outside national boundaries, serving no king or nation. They represent escaped slaves, bankrupt sailors, ideological rebels, and career criminals united by opportunity and necessity.</p>
-                
+
                 <p><strong>Available Forces:</strong></p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
                     <li><strong>Golden Age Pirates</strong> - General pirate force, flexible command options</li>
@@ -588,20 +601,20 @@
                     <li><strong>The Last Buccaneers</strong> - Mixed multinational command options</li>
                     <li><strong>Baymen</strong> - Defensive drunk rule; Elusive units; Size 3 ships maximum</li>
                 </ul>
-                
+
                 <p><strong>Unit Composition:</strong> Core units typically include Pirates, Sea Dogs, and Marins. Support units draw from diverse sources: European Sailors, Jamaican Privateers, African Warriors, Later Flibustiers, Warrior Musketeers, and Pressed Men. This diversity reflects the multinational, multiracial nature of pirate crews.</p>
             </div>
-            
+
             <div class="faction-info">
                 <h3>⚓ Pirate Special Rules & Tactics</h3>
                 <p><strong>Ruthless:</strong> Pirate crews operate without mercy or convention. This rule reflects their willingness to use extreme tactics.</p>
-                
+
                 <p><strong>Shallow Draft Ships:</strong> Pirates favor small vessels like sloops and brigantines that can navigate coastal waters and rivers unavailable to naval forces. The Balandra exemplifies this advantage.</p>
-                
+
                 <p><strong>False Colors:</strong> Pirates can fly false flags to deceive enemies. At the start of each turn, roll d10: on 7+, the deception fails; otherwise, enemies cannot attack this turn unless the pirate force initiates combat.</p>
-                
+
                 <p><strong>Attacker Determination Bonuses:</strong> Different pirate forces gain +1 to +4 to their attack rolls in scenarios, reflecting their predatory nature and superior knowledge of hunting merchant vessels.</p>
-                
+
                 <p><strong>Force-Specific Mechanics:</strong></p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
                     <li><strong>Blackbeard's Men:</strong> Vendetta (extra damage vs. specific nationalities); +2 attacker bonus</li>
@@ -609,18 +622,18 @@
                     <li><strong>Caesar's Men:</strong> Maximum +4 attacker determination; exclusive amphibious advantages</li>
                 </ul>
             </div>
-            
+
             <div class="faction-info">
                 <h3>🚢 The Sloop Balandra - Pirate Perfection</h3>
                 <p><strong>Ship Type:</strong> Small, fast, maneuverable sailing vessel (30-50 tons)</p>
-                
+
                 <p><strong>Historical Examples:</strong></p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
                     <li>Queen Anne's Revenge (Blackbeard's flagship 1717-1718)</li>
                     <li>The Ranger (Calico Jack Rackham's command 1718-1720)</li>
                     <li>Various unnamed sloops used by Caesar and other pirate confederations</li>
                 </ul>
-                
+
                 <p><strong>Tactical Advantages:</strong></p>
                 <ul style="margin-left: 20px; margin-bottom: 15px;">
                     <li><strong>Speed:</strong> Can rapidly approach or disengage from combat</li>
@@ -629,10 +642,10 @@
                     <li><strong>Cargo Flexibility:</strong> Can carry plunder from multiple vessels simultaneously</li>
                     <li><strong>Minimal Armament:</strong> 4-8 cannons; relies on speed and boarding rather than broadside artillery</li>
                 </ul>
-                
+
                 <p><strong>Role in Ocean's Teams:</strong> In 200-point forces, the Balandra serves as command platform, mobile fire support, and deployment base. Commanders often remain aboard vessel during combat, using deck crew and boarding parties for tactical control.</p>
             </div>
-            
+
             <div class="faction-info">
                 <h3>🎭 Pirate Crew Composition & Diversity</h3>
                 <p><strong>Why Piracy Attracted Diverse Recruits:</strong></p>
@@ -643,15 +656,15 @@
                     <li><strong>Indigenous Peoples:</strong> Some pirate crews included Native Americans operating in their own waters</li>
                     <li><strong>Economic Migrants:</strong> Landless Europeans seeking fortune without nation-state oversight</li>
                 </ul>
-                
+
                 <p><strong>This diversity is reflected in Blood & Plunder unit availability:</strong> Pirates can include European Sailors, African Warriors, Jamaican Privateers (mixed race crews), Native American warriors, and mercenary specialists. This represents the truly multicultural nature of historical pirate operations.</p>
             </div>
         </div>
-        
+
         <!-- Example Build Tab -->
         <div id="build" class="tab-content">
             <h2 style="color: #8b0000; margin-bottom: 25px;">📄 Example Force Build - Ocean's Team</h2>
-            
+
             <div style="background: rgba(255,183,3,0.1); padding: 20px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid #ffb703;">
                 <p style="color: #333; margin: 0; line-height: 1.8;">
                     <strong style="color: #8b0000;">Force Builder Export:</strong> 100 Points / 100 | 18 models (Strike point at 4/8/12)<br>
@@ -660,9 +673,9 @@
                     <strong style="color: #8b0000;">Main Weapons:</strong> Pistols, Standard Melee Weapons
                 </p>
             </div>
-            
+
             <iframe src="./Oceans_Team.pdf" style="width: 100%; height: 800px; border: 2px solid #ffb703; border-radius: 8px;" title="Force Builder Export - Ocean's Team"></iframe>
-            
+
             <div style="background: #fff; padding: 20px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #8b0000;">
                 <h3 style="color: #8b0000; margin-top: 0;">About This Build</h3>
                 <p style="color: #333; line-height: 1.8;">
@@ -674,26 +687,26 @@
             </div>
         </div>
     </div>
-    
+
     <script>
-        function switchTab(tabName) {
+        function switchTab(evt, tabName) {
             // Hide all tabs
             const tabs = document.querySelectorAll('.tab-content');
             tabs.forEach(tab => {
                 tab.classList.remove('active');
             });
-            
+
             // Remove active class from all buttons
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(btn => {
                 btn.classList.remove('active');
             });
-            
+
             // Show selected tab
             document.getElementById(tabName).classList.add('active');
-            
+
             // Add active class to clicked button
-            event.target.classList.add('active');
+            evt.currentTarget.classList.add('active');
         }
     </script>
 </body>

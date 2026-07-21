@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blood &amp; Plunder — Free Scenario Compendium</title>
+<style>
+:root{
+  --ink:#241a12; --ink2:#5a4634; --paper:#f6efe2; --paper2:#fffdf8;
+  --rule:#d8c9ae; --accent:#7a2018; --accent2:#0f5257; --gold:#9a6b1f;
+  --land:#6b7a3a; --sea:#1f5b76; --amph:#8a6a1f;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font:16px/1.6 "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;}
+a{color:var(--accent2)}
+a:hover{color:var(--accent)}
+header.masthead{background:linear-gradient(180deg,#2b1d13,#3d2a1a);color:#f2e6d0;
+  padding:34px 24px 28px;border-bottom:4px double var(--gold)}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+header.masthead h1{margin:0;font-size:2.1rem;letter-spacing:.5px}
+header.masthead p{margin:8px 0 0;color:#cbb894;max-width:70ch}
+.legalnote{background:#fff8e6;border:1px solid var(--rule);border-left:4px solid var(--gold);
+  padding:14px 18px;margin:22px 0;border-radius:3px;font-size:.94rem;color:var(--ink2)}
+.controls{position:sticky;top:0;z-index:20;background:rgba(246,239,226,.96);
+  backdrop-filter:blur(6px);border-bottom:1px solid var(--rule);padding:12px 0;margin-bottom:8px}
+.controls .wrap{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button.f{font:inherit;font-size:.88rem;padding:6px 14px;border:1px solid var(--rule);
+  background:var(--paper2);color:var(--ink2);border-radius:20px;cursor:pointer}
+button.f:hover{border-color:var(--gold)}
+button.f.on{background:var(--ink);color:#f6efe2;border-color:var(--ink)}
+#q{font:inherit;font-size:.9rem;padding:6px 12px;border:1px solid var(--rule);
+  border-radius:20px;background:var(--paper2);min-width:190px;flex:1}
+h2.sect{font-size:1.5rem;margin:42px 0 4px;padding-bottom:8px;border-bottom:2px solid var(--rule)}
+h2.sect .sub{display:block;font-size:.82rem;font-weight:400;color:var(--ink2);
+  letter-spacing:.04em;text-transform:uppercase;margin-top:6px}
+.card{background:var(--paper2);border:1px solid var(--rule);border-radius:5px;
+  padding:20px 22px;margin:18px 0;box-shadow:0 1px 2px rgba(60,40,20,.06)}
+.card h3{margin:0 0 4px;font-size:1.24rem}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 14px}
+.tag{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;
+  border-radius:3px;background:#eee3cd;color:var(--ink2);font-family:system-ui,sans-serif}
+.tag.land{background:var(--land);color:#fff}
+.tag.sea{background:var(--sea);color:#fff}
+.tag.amph{background:var(--amph);color:#fff}
+.tag.official{background:#2f4a2a;color:#fff}
+.tag.fan{background:#6a3d6a;color:#fff}
+.tag.other{background:#7a4a2a;color:#fff}
+.bg{font-style:italic;color:var(--ink2);border-left:3px solid var(--rule);
+  padding-left:14px;margin:0 0 14px}
+.f-row{display:grid;grid-template-columns:130px 1fr;gap:4px 14px;margin:9px 0;
+  align-items:start;font-size:.95rem}
+.f-row .k{font-family:system-ui,sans-serif;font-size:.74rem;letter-spacing:.07em;
+  text-transform:uppercase;color:var(--ink2);padding-top:4px}
+.f-row ul{margin:0;padding-left:18px}
+.f-row li{margin:3px 0}
+.win{background:#f0f5ee;border:1px solid #c9d8c2;border-radius:4px;padding:12px 16px;margin:14px 0}
+.win .k{font-family:system-ui,sans-serif;font-size:.74rem;letter-spacing:.07em;
+  text-transform:uppercase;color:#3d5a35;margin-bottom:6px;display:block}
+.win ul{margin:0;padding-left:18px}
+.forces{background:#faf4e8;border:1px dashed var(--rule);border-radius:4px;
+  padding:12px 16px;margin:14px 0;font-size:.9rem}
+.forces b{display:block;margin:8px 0 2px;color:var(--accent)}
+.forces b:first-child{margin-top:0}
+.src{margin-top:14px;padding-top:11px;border-top:1px solid var(--rule);font-size:.85rem}
+.src a{word-break:break-all}
+.warn{background:#fdf0ec;border-left:4px solid var(--accent);padding:11px 15px;
+  margin:12px 0;font-size:.9rem;border-radius:3px}
+table{border-collapse:collapse;width:100%;font-size:.88rem;margin:10px 0}
+th,td{border:1px solid var(--rule);padding:6px 9px;text-align:left}
+th{background:#efe5d0;font-family:system-ui,sans-serif;font-size:.78rem;
+  letter-spacing:.05em;text-transform:uppercase}
+footer{margin:56px 0 0;padding:26px 0 44px;border-top:2px solid var(--rule);
+  font-size:.88rem;color:var(--ink2)}
+.hidden{display:none}
+
+/* ── site nav (added when merged into the Ocean's Team site) ── */
+.sitebar{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);
+  border-bottom:3px solid #ffb703;padding:11px 0}
+.sitebar .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.sitebar a.home{color:#ffb703;text-decoration:none;font-weight:bold;
+  font-family:'Trebuchet MS',sans-serif;font-size:1.02rem;letter-spacing:.5px}
+.sitebar a.home:hover{color:#ffd700}
+.sitebar .here{color:#8ea3b8;font-family:'Trebuchet MS',sans-serif;
+  font-size:.86rem;margin-left:auto}
+.backlink{margin:34px 0 0;text-align:center}
+.backlink a{display:inline-block;background:#1a1a2e;color:#ffb703;
+  text-decoration:none;font-family:'Trebuchet MS',sans-serif;font-weight:bold;
+  font-size:.92rem;padding:11px 26px;border:2px solid #ffb703;border-radius:5px}
+.backlink a:hover{background:#ffb703;color:#1a1a2e}
+
+@media print{
+  .controls,.sitebar,.backlink{display:none} body{background:#fff}
+  .card{break-inside:avoid;box-shadow:none}
+  header.masthead{background:#fff;color:#000;border-bottom:2px solid #000}
+  header.masthead p{color:#333}
+}
+@media(max-width:640px){ .f-row{grid-template-columns:1fr} .f-row .k{padding-top:8px} }
+</style>
+</head>
+<body>
+
+<div class="sitebar">
+  <div class="wrap">
+    <a class="home" href="index.html">&#9875; Ocean's Team</a>
+    <span class="here">Free Scenario Compendium</span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>Blood &amp; Plunder — Free Scenario Compendium</h1>
+    <p>Every legally free, playable scenario for Firelock Games' Blood &amp; Plunder, gathered
+    from official downloads, organized-play kits and community releases. Compiled 21 July 2026.</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <button class="f on" data-f="all">All</button>
+    <button class="f" data-f="land">Land</button>
+    <button class="f" data-f="sea">Sea</button>
+    <button class="f" data-f="amph">Amphibious</button>
+    <button class="f" data-f="official">Official only</button>
+    <input id="q" type="search" placeholder="Search scenarios…">
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="legalnote">
+  <b>What this is.</b> 25 scenarios you can download and play without buying a book, plus a summary
+  of what only exists in the paid books. Everything here is either published free by Firelock, or
+  reprinted publicly with Firelock's permission. Nothing is reproduced from a paid book without
+  that permission. Every entry links to its original source — <b>always grab the source PDF too</b>,
+  because deployment diagrams are images and can't be reproduced as text.
+  <br><br>
+  <b>You still need the core rules.</b> These scenarios reference rules (Strike Points, Fatigue,
+  Reserves, Limited Visibility, Caught Unaware) defined in the core rulebook — available as a
+  <a href="https://firelockgames.com/products/blood-plunder-rulebook-pdf">$15 PDF</a>, no shipping.
+</div>
+
+<!-- ═══════════════════ SOP 2026 ═══════════════════ -->
+<h2 class="sect">Summer of Plunder 2026 — Queen Anne's War
+  <span class="sub">Official Firelock · free kit · 7 B&amp;P scenarios ·
+  <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">Download the full kit PDF</a></span></h2>
+
+<article class="card" data-type="land" data-src="official" data-name="Sortie from Castillo San Marcos St Augustine Spanish English 1702">
+  <h3>Week 1 — Sortie from Castillo San Marcos</h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">100 pts/side</span><span class="tag">2 players</span><span class="tag">6 turns</span>
+    <span class="tag">St. Augustine, 11 Nov 1702</span></div>
+  <p class="bg">During the 1702 English siege of St. Augustine, the Spanish sortied from Castillo San
+  Marcos to burn the houses nearest the fort so the English could not use them as firing positions.
+  They succeeded in burning several, later reimbursing owners between 50 and 1,200 pesos.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×3' land, minimal natural terrain. The English
+  (Defender) edge represents the edge of St. Augustine: place <b>5–8 buildings</b> of one or two sections
+  in <b>two rough rows</b> — one along the board's middle, one close to the Defender's edge.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender (English):</b> half their units
+  (round down) within <b>6"</b> of their board edge; the rest arrive via the <b>Reserves</b> rule
+  (rulebook p.146). <b>Attacker (Spanish):</b> within <b>4"</b> of their board edge.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>Attacking units may add <b>Torches</b> equipment at <b>no cost</b>.</li>
+    <li>If Wind Speed is ever positive, apply a <b>−1 bonus to all Set Fire actions per +1 Wind Speed</b>.</li></ul></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender</b> gains a Strike Point for each <b>Destroyed Building</b>.</li>
+    <li><b>Defender</b> gains a Strike Point for each <b>building still burning at end of turn 6</b>.</li>
+    <li><b>Attacker</b> gains a Strike Point if <b>no building is burning or destroyed at end of turn 4 or later</b>.</li>
+    <li><b>Attacker</b> gains a Strike Point if <b>no building is destroyed at end of turn 6</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span>100 pts or less. Attacker may not include
+  <b>Field Guns or Cavalry</b>. Deliberately scaled to one English + one Spanish nationality box.</span></div>
+  <div class="forces">
+    <b>Reformed Spanish Militia — 99 pts</b>Jose de Zuniga Y La Cerda 20 · 7 Lanceros 35 ·
+    8 Milicianos Reformados 24 · 4 Milicianos Indios 20
+    <b>British Militia (North American Militia) — 100 pts</b>English Commander 10 (Tough) ·
+    8 English Militia 24 · 6 Provincials 30 · Socket Bayonets 6 · 6 Indian Fighters 30
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a> — part of an upcoming larger 1702 St. Augustine campaign.</div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="Hornigold Teach La Concorde Queen Annes Revenge Blackbeard French 1717">
+  <h3>Week 2 — Hornigold and Teach Attack <i>La Concorde</i></h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">227 v 207 pts</span><span class="tag">2–3 players</span><span class="tag">6 turns</span>
+    <span class="tag">St. Vincent, 28 Nov 1717</span></div>
+  <p class="bg">In late November 1717 Hornigold and Blackbeard chased the 250-ton French ship
+  <i>La Concorde</i>, whose captain Pierre Dosset had 70% of his crew down with "scurvy or the bloody
+  flux" and could not man a full complement of guns. She surrendered after two volleys and became
+  Teach's flagship — renamed <i>Queen Anne's Revenge</i>.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×4' or 4'×6' sea board, <b>no extra terrain</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> part of their ship within
+  <b>4"</b> of their board <b>corner</b>, oriented per the diagram. <b>No Defending units may start
+  assigned to any artillery.</b> <b>Attacker(s):</b> anywhere <b>outside 24"</b> from the Defender's ship.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>Before the game the Defender <b>must take 2 Lucky Hits to their Rigging</b> (storm damage).</li>
+    <li><b>The board may not be scrolled.</b> A ship sailing off any edge but the Escape Edge hits a rocky shoal and is <b>grounded</b>.</li>
+    <li>With 3 players, swap the Teach Character for the <b>Commander</b> version and let the French player add <b>~25 points</b>. The two pirates work as a team.</li></ul></span></div>
+  <div class="win"><span class="k">Victory</span><ul>
+    <li><b>Defender wins immediately</b> if they sail off the <b>Escape edge</b>.</li>
+    <li><b>Defender wins</b> if there are <b>no Attacking units aboard at the end of round 6</b>.</li>
+    <li><b>Attackers win immediately</b> if they <b>capture</b> the Defender's ship.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span>Attacker force best split into two smaller
+  ships, and may be <b>10% larger</b> than the Defender if so split. Defender should be in one larger ship.</span></div>
+  <div class="forces">
+    <b>The Flying Gang — 227 pts</b>
+    <i>Ship 1:</i> Benjamin Hornigold 30 · 8 Pirates 24 · 6 Sea Dogs 24 · 6 Jamaican Privateers 24 ·
+    Bermuda Sloop 13 · 2 Pairs Swivel Guns 10<br>
+    <i>Ship 2:</i> 8 Pirates 24 · Edward Teach (Character) 10 · 6 Sea Dogs 24 · 6 Jamaican Privateers 24 ·
+    Balandra 10 · 2 Pairs Swivel Guns 10
+    <b>French Privateers (RtB) — 207 pts</b>Experienced French Commander 10 (Cold Blooded) ·
+    8 Later Flibustiers 40 · 10 Marins w/o Pistols 30 · 8 Marins w/o Pistols 24 · 6 Marins 24 ·
+    6th Rate Frigate (or any size 3) 26 · Anti-Grappling Measures 3 · 5 Pairs Medium Cannons 50
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a></div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="Prisoner Rescue Rio de Janeiro Duguay-Trouin Portuguese French 1711">
+  <h3>Week 3 — Prisoner Rescue at Rio de Janeiro</h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">200 v 152 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span>
+    <span class="tag">Rio de Janeiro, Sep 1711</span></div>
+  <p class="bg">The first French attack on Rio (1710) under Jean-François Du Clerc was a disaster —
+  600 of 1,500 men captured. René Duguay-Trouin seized the chance for glory and plunder, sailing
+  straight into the harbour on a misty morning against poorly organised Portuguese defences. The city
+  fell, the prisoners were freed, and the French escaped with nearly 4 million pounds of plunder.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>3'×4' land mat, <b>at least 4 buildings</b>
+  representing a port city. More may be used, but <b>4 must be designated searchable and numbered 1–4</b>.
+  Each searchable building must have an <b>access point on the board centreline</b>, sit <b>at least 6"
+  from any board edge</b> and <b>at least 4" from each other</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> anywhere <b>9" away from
+  the Attacker's zone</b>. <b>One in every three</b> Defender units is held off-table as <b>Reserves</b>
+  (p.146) — the Defender picks which. Non-Reserve units set up within <b>3"</b> of the indicated edge;
+  Reserves enter from any table edge in the Defender's zone. Activation Cards are drawn for off-board
+  units at the start of the turn they enter. <b>Attacker:</b> within <b>4"</b> of their board edge.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>After setup but before placing forces, the Defender <b>secretly writes down which building holds the prisoners</b>.</li>
+    <li>When an Attacking unit enters that building, the Defender adds a <b>"Captured Enemy Soldier"</b> to a unit inside. That is the objective for the rest of the game.</li>
+    <li>The prisoners <b>may not be chosen as a casualty</b> in melee or shooting.</li>
+    <li>While holding the prisoners, <b>reduce movement by 1"</b>.</li>
+    <li>Prisoners may be <b>transferred to a friendly unit within 2"</b> with a standard action.</li>
+    <li><b>Captured Enemy Soldier</b> (Hostage/Advisor) — no Special Rules. <i>Extra ability:</i> each time your opponent draws a new hand, you may look at <b>one random card per 3 cards drawn</b> (min 1).</li></ul></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li>Either side gains a Strike Point if the <b>Prisoners are controlled by the enemy</b>.</li>
+    <li>At end of turn 4+, the <b>Attacker</b> gains a Strike Point if the Prisoners are <b>not yet revealed</b>.</li>
+    <li><b>Attacker automatically loses</b> if they don't control the Prisoners by the end of turn 6.</li>
+    <li><b>Defender automatically loses</b> if the Prisoners are moved off the Attacker's board edge.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span>Attacker may not include <b>Cavalry or Artillery</b>.</span></div>
+  <div class="forces">
+    <b>French Royal Navy — 200 pts</b>René Duguay-Trouin 32 · 6 Veteran Fusiliers 48 ·
+    8 Trained Marins Basque 40 · 8 Trained Marins Basque 40 · 8 Trained Milices des Caraïbes 40
+    <b>Brazilian Portuguese Garrison — 152 pts</b>Francisco de Castro Morais 16 · 6 European Regulars 42 ·
+    Mission Priest 3 · 7 Jewish Militia 28 · 8 Milicianos Reformados 24 · Hidalgo 4 · 7 Milicianos Indios 35
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a></div>
+</article>
+
+<article class="card" data-type="amph" data-src="other" data-name="Stede Bonnet Last Bargain Rhett Cape Fear Port Royal sandbar 1718">
+  <h3>Week 4 — Stede's Last Bargain</h3>
+  <div class="meta"><span class="tag amph">Amphibious</span><span class="tag other">Port Royal — different game</span>
+    <span class="tag">30 Pieces of Eight</span><span class="tag">6 rounds</span>
+    <span class="tag">Cape Fear, Sep 1718</span></div>
+  <div class="warn"><b>Note:</b> this is a <b>Port Royal</b> scenario, not Blood &amp; Plunder — a
+  skirmish system with its own rules. Included because it ships in the free B&amp;P kit and covers the
+  same history. Scenario 1 of the Last Stand series by thievesharbor.com.</div>
+  <p class="bg">September 1718, Cape Fear estuary — Stede Bonnet's sloop grounded on a sandbar and was
+  hunted down by William Rhett's crew.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>2'×2' with a <b>large sandbar covering roughly
+  the centre 16"</b>. Scatter driftwood, barrels and cover across the sand. Within <b>6" of a board
+  edge</b> place the pirate sloop <i>Royal James</i>; on the <b>opposite edge</b> the English Militia
+  sloop <i>Henry</i>. All other board area is <b>Shallow Water and difficult terrain</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender (Bonnet):</b> entire force on
+  the <i>Royal James</i>. <b>Attacker (Rhett):</b> <b>First Company</b> (or half the company, round
+  down, in a Campaign) on or within <b>4"</b> of <i>Henry</i>; at the <b>end of round 3</b> the
+  <b>Second Company</b> deploys within <b>2" of either sandbar edge not facing a ship</b>.</span></div>
+  <div class="f-row"><span class="k">Special</span><span>At the <b>end of Rounds 2 and 4</b> the tide
+  rises: <b>reduce the sandbar by 5"</b> and <b>shift both ships 2" inward</b>. In campaign play the
+  winner takes <b>3 Plunder Tokens</b>, the loser <b>1</b>.</span></div>
+  <div class="win"><span class="k">Victory</span><ul>
+    <li><b>Defender:</b> end a round <b>outnumbering the Attacker aboard <i>Henry</i></b>, OR <b>survive 6 rounds</b>.</li>
+    <li><b>Attacker:</b> <b>wipe out the Defender's force</b>, OR <b>capture Stede</b> by dealing a fatal blow in melee.</li></ul></div>
+  <div class="forces">
+    <b>William Rhett's Militia</b> (statblocks from Forces of the Crown). <i>Righteous Fury:</i> whenever
+    a character kills an enemy they gain a <b>−1 bonus to a stat of choice</b>.<br>
+    <i>First Company:</i> 1× William Rhett (Rapier, Pistol) · 2× Seaman (Sword, Dagger) ·
+    1× Able Seaman (Pistol, Sword) · 1× Soldier (Musket)<br>
+    <i>Second Company:</i> 1× Lieutenant (Sword, Pistol) · 3× Soldiers (Musket)
+    <b>Stede Bonnet's Crew</b> (statblocks from Jamaican Pirates). <i>Desperation:</i> a character with
+    fatigue applies a <b>−1 bonus to Resolve</b>.<br>
+    1× Stede Bonnet (Rapier, 2 Pistols) · 1× Quartermaster (Pistol, Sword, Grenadoe) · 1× Cabin Boy (Pistol) ·
+    2× Sea Dogs (Pistol, Axe) · 2× Freebooters (Musket) · 1× Old Buccaneer (Musket, Sword)
+    <b>Profiles</b><b>William Rhett</b> — Cost 10, Exp 4, Fight 6/5, Shoot 6/5, Resolve 5.
+    Command, Fate (1), Ruthless, Rage.<br>
+    <b>Stede Bonnet</b> — Cost 10, Exp 5, Fight 6/6, Shoot 6/6, Resolve 3. Command, Fate (1), Motivated,
+    Gentleman. <i>Motivated:</i> each activation gain 1 extra free action, given only through Command.
+    <i>Gentleman:</i> on activating he may remove 1 Fatigue; if he does he is limited to 1 Fight or Shoot action.
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a></div>
+</article>
+
+<article class="card" data-type="amph" data-src="official" data-name="Attack on Charles Town Charleston Franco-Spanish Rhett army scale 1706">
+  <h3>Week 5 — Attack on Charles Town</h3>
+  <div class="meta"><span class="tag amph">Amphibious</span><span class="tag official">Official</span>
+    <span class="tag">~550 pts/side</span><span class="tag">6 players (2–6)</span><span class="tag">6 turns</span>
+    <span class="tag">Sewee Bay, Sep 1706</span></div>
+  <p class="bg">The Franco-Spanish Charleston expedition arrived piecemeal and was rebuffed by Governor
+  Johnson. The tardy French ship <i>La Brilliante</i> is only now attempting to land troops north of
+  Charleston in Sewee Bay; Johnson has dispatched Colonel Rhett and Captain Stool in two fast sloops to
+  harass her, plus Captain Fenwicke with militia to drive the French and Spanish from the land.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×6' or 4'×8' amphibious, <b>split roughly evenly
+  down the long middle</b> between water and land. The land should have light cover and substantial
+  <b>difficult terrain (marsh and wetlands)</b>. Add <b>one watchtower near the centre of the land</b>.</span></div>
+  <div class="f-row"><span class="k">Army Scale</span><span>Three players per side, each controlling a
+  "company"; one player per side is the <b>General</b>. <b>Only the General draws activation cards</b>,
+  drawing cards equal to the number of units in the friendly company with the most units. Each time the
+  General plays a card, <b>each player in that army activates one unit</b>. The General has final say on
+  Fortune Points, and <b>each General starts with 9 Fortune Points</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Starting with the <b>Defenders</b>, teams
+  alternate, one player deploying their entire force at a time. <b>Attackers (Franco-Spanish):</b> one
+  third of the board as shown, on land and sea — <b>all Field Guns must start on the landmass</b>.
+  <b>Defenders (British/Dutch):</b> the opposite third, on land and sea.</span></div>
+  <div class="win"><span class="k">Objectives (scored at end of game)</span><ul>
+    <li>A force gains <b>2 Strike Points if the enemy controls the central watchtower</b>.</li>
+    <li>A force gains <b>2 Strike Points for each of their own ships captured or destroyed</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span>Scalable 2–6 players. Around <b>⅓ of each team
+  should start on land</b>.</span></div>
+  <div class="forces">
+    <b>ATTACKER — P1 General Arbousset, Franco-Spanish Alliance 199</b>Experienced French Commander 10
+    (Inspiring) · 8 Milices des Caraïbes 32 · 8 Milices des Caraïbes 32 · 6 Boucaniers 42 ·
+    8 Soldados Reformados 48 · 4 Longboats 12 · 5 Artillerymen 15 · Light Fieldgun w/ Grapeshot 8
+    <b>ATTACKER — P2 <i>La Brilliante</i>, French Royal Navy 199</b>Experienced French Commander 10
+    (Broadside!) · 10 Marins w/o pistols 30 · 7 Marins w/o pistols 21 · 5 Marins 21 · 6 Fusiliers 42 ·
+    Light Frigate 21 · 5 Pairs Medium Cannons 50 · Grapeshot &amp; Chainshot 5
+    <b>ATTACKER — P3 Spanish Land Forces, Reformed Spanish Militia (Guerilla Fighters) 148</b>Experienced
+    Spanish Commander 10 (Well-Equipped) · 8 Milicianos Reformados 24 · 8 Milicianos Reformados 24 ·
+    6 Lanceros 30 · 6 Milicianos Indios 30 · 6 Milicianos Indios 30
+    <b>DEFENDER — P1 Capt. Stool in the <i>Flying Horse</i>, Dutch Marine 200</b>Pieter Stool 37 ·
+    7 Kapers w/ sidearm pistol 37 · 10 Zeelieden w/o pistols 30 · 5 Kapers 25 · 6 Jamaican Privateers 24 ·
+    Sloop 14 · 3 Pairs Medium Cannons 30 · Grapeshot &amp; Chainshot 3
+    <b>DEFENDER — P2 Rhett in the <i>Seaflower</i>, British Militia (Pirate Hunters) 200</b>William Rhett 25 ·
+    8 English Militia 24 · 6 Able Seamen 36 · 10 Sea Dogs w/o pistols 30 · 6 Sea Dogs w/ muskets 28 ·
+    Bermuda Sloop 13 · Reinforced Bulkhead 3 · 3 Pairs Light Cannon 21 · 2 Pairs Swivel Guns 10 · 1 Longboat 3
+    <b>DEFENDER — P3 Capt. John Fenwicke, British Raiders 150</b>Untested British Commander 0 ·
+    7 English Militia 21 · 8 Frontier Militia 40 · Officer 10 · 8 Braves 40 · Native American Emissary 4 ·
+    Thrown Weapons 3 · 8 Young Braves 32
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a></div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="Hatfield Raid Gray Lock Wabanaki Massachusetts Dummers War 1724">
+  <h3>Week 6 — Hatfield Raid, 1724</h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">84 v 81 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span>
+    <span class="tag">Hatfield MA, 18 Jun 1724</span></div>
+  <p class="bg">The Wabanaki were excluded from the 1713 treaties ending Queen Anne's War, and English
+  expansion past the Kennebec led to Dummer's War (1723–25). In the western theatre — Gray Lock's War —
+  Chief Gray Lock raided from his Missisquoi base at the north end of Lake Champlain; in his second
+  summer campaign he fell upon men working the fields outside Hatfield.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>3'×4' with a <b>house in the centre</b>, <b>fields
+  around the house</b>, and <b>woodland area terrain around the edges</b>, as shown.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> in the fields within <b>4"
+  of the long centreline</b>; <b>may not deploy within buildings or within 5" of the building</b>.
+  <b>Attacker:</b> within <b>4" of the long board edges</b>. The Wabanaki may also use <b>Lay In Wait</b>
+  during setup and <b>Vanguard</b> after setup.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>English Militia units <b>start without their muskets equipped</b>. The first time each unit makes base contact with the central Structure, it regains its <b>(loaded) Firelock Muskets</b>.</li>
+    <li>Attacking units <b>may move off the board</b> and return <b>anywhere on the same edge</b> on any later turn. The Attacker <b>draws Activation Cards for all units, even off-board ones</b>.</li>
+    <li>Uses the <b>No Quarter</b> scenario rule.</li>
+    <li><b>Fields count as Rough Terrain and provide no Cover.</b></li></ul></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li>At end of turn 6 the <b>Attacker</b> gains <b>1 Strike Point per Defending unit left on the board</b>.</li>
+    <li>The <b>Attacker</b> gains <b>2 Strike Points if their own Commander is removed as a casualty</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span>Attacker: no <b>Artillery, Fortifications or
+  Mounted units</b>. Defender: no <b>Artillery or Fortifications</b>.</span></div>
+  <div class="forces">
+    <b>Attacker — Wabanaki (RtB) 84 pts</b>Chief Gray Lock 20 · 4 Pnieses 28 · 4 Braves 20 · 4 Young Braves 16
+    <b>Defender — British Militia (North American Militia) 81 pts</b>Experienced Commander 10
+    (Vendetta: Native American) · 6 Frontier Militia 30 · 8 English Militia 24 · 6 English Militia 18 ·
+    Fortified House 5
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a></div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="Blackbeard Last Battle Maynard Ocracoke North Carolina 1718">
+  <h3>Week 8 — Blackbeard's Last Battle</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">174 v 175 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span>
+    <span class="tag">Ocracoke, 22 Nov 1718</span></div>
+  <p class="bg">Lieutenant Robert Maynard spied Blackbeard's balandra and ran both his sloops aground
+  while closing. Teach chose to board Maynard's sloop; Maynard's men, hidden below decks, erupted into
+  a fierce melee. Teach fell with 5 shot wounds and 20 cuts, and an unknown Scotsman severed his head.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×4' sea, <b>no extra terrain features</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> ship within <b>2"</b> of
+  their board edge, <b>Abeam of the wind</b>, placed within <b>4" of either corner</b> of that edge;
+  must start <b>Anchored</b>. <b>Attacker:</b> ship with its <b>rudder within 4" of the opposite
+  corner</b>; sail setting at the <b>first non-zero setting above Anchored</b>.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>The <b>left and right board edges are impassable</b>; a ship ending movement <b>within 2"</b> of them <b>runs aground</b>.</li>
+    <li><b>Unpredictable Waters:</b> any event drawn is <b>replaced with Submerged Hazard</b>, and includes a wind change (roll as normal).</li>
+    <li><b>Submerged Hazard:</b> choose one ship or boat <b>at random from all forces</b>. The controlling player places a <b>Shoal marker of at least 4"×12" under the Bow</b> in any orientation, so long as the <b>marker's centre is under the Bow</b>, then rolls to see if the ship has run aground as normal.</li></ul></span></div>
+  <div class="win"><span class="k">Victory</span><ul>
+    <li><b>Attacker wins automatically</b> if they <b>capture the Defender's ship</b>.</li>
+    <li><b>Defender wins automatically</b> if their ship <b>moves off the Attacker's table edge</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span>Use <b>ships close to the same size and class</b>.</span></div>
+  <div class="forces">
+    <b>Attacker — Maynard's Pirate Hunters 174 pts</b>Robert Maynard 27 · 8 Sea Dogs w/ Firelock Muskets 36 ·
+    Unknown Scotsman 4 · 8 Able Seamen 48 · 2 Blunderbusses 2 · 9 English Militia 27 · Plug Bayonets 4 ·
+    Bermuda Sloop 13 · Reinforced Bulkheads 3 · 2 Pairs Swivel Gun (Foredeck) 10
+    <b>Defender — Golden Age Pirates 175 pts</b>Edward "Blackbeard" Teach 32 · 8 Pirates 24 ·
+    Buccaneer Guns 16 · Caesar 5 · 6 Roundsmen 36 · Buccaneer Guns 6 · 5 Jamaican Privateers 20 ·
+    Downgrade to Inexperienced −5 · Balandra 10 · Reinforced Bulkheads 3 · 4 Pairs Light Cannons 28
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a></div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="Charles Vane Escape Nassau Woodes Rogers fireship blockade army scale 1718">
+  <h3>Week 9 — Charles Vane's Escape from Nassau</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">~650 pts/side</span><span class="tag">6 players</span><span class="tag">6 turns</span>
+    <span class="tag">Nassau, 22 Jul 1718</span></div>
+  <p class="bg">One team plays Charles Vane and his accomplices attempting to escape the blockaded
+  harbour at Nassau; the other plays Woodes Rogers, come to restore law and order to New Providence.
+  Historically there was little fighting — the fireship forced the British warships to cut their anchor
+  cables, letting Vane slip out the far end of the bay next morning. This scenario lets them fight it out.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×6' sea. <b>All board edges but the Defender's
+  are Impassable</b>, and <b>within 2" of those three edges is Shoal terrain</b>.</span></div>
+  <div class="f-row"><span class="k">Army Scale</span><span>As Week 5 — 3 players per side, only the
+  General draws activation cards (equal to the largest friendly company's unit count); each card played
+  activates one unit per player in that army. <b>Each General starts with 9 Fortune Points.</b></span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defenders (British):</b> ships
+  <b>Anchored</b>, <b>exactly 24" from the Defender's board edge</b> in a blockade as shown.
+  <b>All Defending units must deploy Unassigned.</b><br>
+  <b>Attackers (Pirates):</b> the <b>Brigantine Fire Ship</b> anywhere in the Attacker's half,
+  <b>no closer than 24"</b> to the Defender's ships, sail setting <b>3"</b>, with the <b>Longboat in
+  tow</b>. Remaining ships within <b>4" of the Attacker's edge</b> at the <b>lowest sail setting above 0"</b>.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li><b>Limited Visibility: Night</b> — ships visible from <b>24"</b>; the burning ship and anything <b>within 6"</b> of the fire is visible from <b>anywhere</b> on the board.</li>
+    <li>Attacking ships <b>may sail off the Defender's board edge</b>.</li>
+    <li><b>Commanders do not make Strike Tests</b>, but Strike Points are tallied to decide the winner at the end of round 6 (or earlier if time runs short).</li></ul></span></div>
+  <div class="f-row"><span class="k">Fireship</span><span><ul>
+    <li>The Pirate Brigantine starts with a <b>Fire Critical Hit marker on one section</b>; this marker <b>may never be removed</b>.</li>
+    <li>Before a British unit activates, if it is <b>within 8"</b> of the Fireship it must take a <b>Fatigue test with one d10</b>.</li>
+    <li>When a <b>burning section</b> collides with another ship: apply a <b>Fire Critical Hit to the hull section touched</b>, apply <b>+4 to the die</b> on the collision table (p.88), and <b>all enemy units on the struck ship take a Fatigue test with 1d10</b>.</li></ul></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defenders</b> gain 1 Strike Point per <b>Fire Critical Hit marker on their ships</b>.</li>
+    <li><b>Defenders</b> gain 1 Strike Point per <b>destroyed deck</b> of their ships.</li>
+    <li><b>Defenders</b> gain 1 Strike Point per <b>Attacker ship (size 2+) that sails off the Defenders' edge</b>.</li>
+    <li><b>Attackers</b> gain 1 Strike Point per <b>friendly unit removed as casualties</b>.</li>
+    <li>The <b>Attacker takes no Strike Points for anything related to the Fireship</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Open play</span><span><b>Attackers:</b> P1 (General) ~<b>250 pts</b>
+  including a fireship with skeleton crew, <b>no size 4 ships</b>; two more players at <b>200 pts</b> in
+  1–3 deck ships. <b>Defenders:</b> P1 ~<b>150 pts</b> with <b>no ship</b>, starting aboard P2's ship;
+  P2 <b>300 pts</b> on a <b>size 4</b> ship with plenty of cannons (leaving room for P1's units);
+  P3 <b>200 pts</b> on a <b>size 2–3</b> ship.</span></div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/2026%20-%20SoP%20Print-dlc_92pkM6oTFB.pdf">2026 Summer of Plunder kit</a> ·
+  Historical force lists are <b>not</b> in the booklet — they're at
+  <a href="https://bloodandpigment.com/force-lists-for-vanes-escape-from-nassau-harbor-2026-summer-of-plunder/">Blood &amp; Pigment</a>.</div>
+</article>
+
+<!-- ═══════════════════ SOP 2025 ═══════════════════ -->
+<h2 class="sect">Summer of Plunder 2025
+  <span class="sub">Official Firelock · free kit · 3 B&amp;P scenarios ·
+  <a href="https://ik.imagekit.io/firelockgames/DLC/SoP%20202505-digital_tvflePELf.pdf?updatedAt=1747082066409">Download the full kit PDF</a></span></h2>
+
+<article class="card" data-type="land" data-src="official" data-name="Men of Fortune tokens control the field 2025">
+  <h3>Scenario I — Men of Fortune</h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">100–200 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <p class="bg">Not content to accept the hand dealt them, bold buccaneers and pirates often took
+  desperate measures to make their own fortune, attempting to change or escape the decrees of Lady Fortune.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>3'×4' or 3'×3' land with <b>plenty of natural
+  area terrain</b>. Place <b>4 Fortune Token coins along the centreline</b>, equal distances from each
+  player's edge — about <b>9" apart on a 4'-wide board, 7" apart on a 3'-wide board</b>. Suggested:
+  premium fortune coins nearer the centre, smaller coins to the sides.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Starting with the Defender, players deploy
+  within <b>4"</b> of their board edges.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>Players <b>begin with 2 fewer Fortune Tokens than usual</b>.</li>
+    <li>At the start of each turn a player may <b>claim up to 1 Fortune Token</b> from the table if they started the round with <b>at least one unit in base contact</b> with it AND <b>no enemy unit started the round within 4"</b> of it.</li></ul></span></div>
+  <div class="win"><span class="k">Objective</span><ul>
+    <li>A player gains <b>1 Strike Point if they have no unspent Fortune Tokens in their supply at the end of a round</b>.</li></ul></div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/SoP%20202505-digital_tvflePELf.pdf?updatedAt=1747082066409">2025 Summer of Plunder kit</a>. Pairs with the 10–16 June campaign objectives.</div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="The Fickle Sea wind table sailing master ships wheel multiplayer 2025">
+  <h3>Scenario II — The Fickle Sea</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">150–250 pts/player</span><span class="tag">2–6 players</span><span class="tag">6 turns</span></div>
+  <p class="bg">Sea rovers spent years mastering the ways of the sea, yet it remained unpredictable and
+  uncontrollable. Shifting winds keep crews on high alert as conditions change rapidly. Review the Ship
+  Advanced Maneuvers rules before starting.</p>
+
+  <div class="f-row"><span class="k">Table</span><span><b>4'×4' for 2–4 players</b> or <b>4'×6' for 4–6</b>.
+  Whole board is <b>Deep Water</b>; extra water terrain at players' discretion. <b>Wind Speed starts at +1.</b></span></div>
+  <div class="f-row"><span class="k">Pre-game</span><span>Each player may either add a <b>Ship's Wheel</b>
+  upgrade to one ship <b>or</b> add the <b>Sailing Master</b> Character as an extra model to a unit
+  (prefer a unit without a Character; <b>this may break the 1-Character-per-50pts limit</b>). If neither
+  is legal for a force, that force's Commander gains <b>Tough</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Starting with a Defender and alternating with
+  Attackers, each player deploys their entire force with part of their ship(s) within <b>6"</b> of their
+  board edge. <b>All ships must deploy more than 24" from opposing ships.</b></span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>With 4 or 6 players, split into Attacker/Defender teams by <b>Attacker rolls</b> before the game. Use standard activation or a <b>Multiplayer Variant</b> from <i>No Peace Beyond the Line</i>.</li>
+    <li>At the start of each round, <b>before drawing activation cards, roll 1d10 on the Wind Table</b> and apply immediately. <b>Teams alternate who rolls</b>, starting with the Defenders.</li>
+    <li>After a <b>size 2+ ship moves</b>, any unit assigned to the <b>Sweeps takes a Fatigue Test with a single d10</b>.</li>
+    <li>While Wind Speed is <b>+1 or more</b>, apply a <b>+1 penalty to all Grapple Tests</b>.</li></ul></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li>A player with <b>at least one Critical Hit marker on their Rigging at the end of a round</b> gains <b>1 Strike Point</b>.</li>
+    <li>With more than 2 players, use the <b>No Quarter</b> rule and ignore Strike Tests — play until one fleet strikes its colours or turn 6 ends.</li></ul></div>
+  <div class="f-row"><span class="k">Forces</span><span>150–250 pts per player. In 4- or 6-player games
+  sizes may vary so long as each team totals the same (e.g. three 150-pt forces vs two 225-pt forces =
+  450 each). Assign a unit to Sheets &amp; Braces or keep one unassigned to react to wind changes.</span></div>
+  <div class="forces">
+    <b>Sailing Master (Character)</b>Unit restriction: only units with <b>Sailors</b> or <b>Expert Sailors</b>.
+    Command Range <b>4"</b>. Command Points <b>1</b> — may only grant a <b>Change Sail Setting or Advanced
+    Maneuver</b> extra action. Special Rules: Sailing Master, Expert Sailors.
+    <b>Ship's Wheel (Upgrade)</b><b>Size 3+ ship only.</b> Apply a <b>−1 bonus to Sailing Tests when
+    attempting Advanced Maneuvers</b>.
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/SoP%20202505-digital_tvflePELf.pdf?updatedAt=1747082066409">2025 Summer of Plunder kit</a>. Pairs with 1–7 July or 22–28 July objectives.</div>
+</article>
+
+<article class="card" data-type="amph" data-src="official" data-name="Escape by Sea hostage musician dock 2025">
+  <h3>Scenario III — Escape by Sea</h3>
+  <div class="meta"><span class="tag amph">Amphibious</span><span class="tag official">Official</span>
+    <span class="tag">100–200 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <p class="bg">A band of buccaneers has landed and seized an important prisoner, and is now attempting
+  to escape by sea with the enemy hot on their heels.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×4', <b>50% land / 50% water</b>. Add a <b>dock
+  near the board centre</b>, plus <b>one boat and one size 2+ ship</b>, both at <b>Sail Setting 0"</b>
+  and <b>grappled to the dock</b>. The ship may face any direction <b>except towards land</b>. The
+  <b>wind starts blowing from the land towards the sea</b>.</span></div>
+  <div class="f-row"><span class="k">Pre-game</span><span>After rolling for Attacker/Defender: the
+  <b>Attacker adds the Musician</b> model to their Commander's unit; the <b>Defender attaches the
+  Hostage</b> Character to their Commander's unit. This may break the 1-Character-per-50pts limit.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> within <b>10"</b> of their
+  board <b>corner</b> as shown; they <b>may deploy their smallest unit on the ship</b> at board centre —
+  <b>this may not be the Commander's unit</b>. <b>Attacker:</b> within <b>8"</b> of their corner as shown.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li><b>Reduce any ship movement by 1"</b> if the Boat is grappled to the Ship.</li>
+    <li>The <b>Hostage may not be ransomed until the 6th turn</b>.</li></ul></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li>If the <b>Defender moves the Hostage off the full sea board edge, they immediately win</b>.</li>
+    <li>If the <b>Attacker controls the Hostage at the end of any turn</b>, the Defender gains <b>1 Strike Point</b>.</li>
+    <li>The <b>Defender gains 1 Strike Point if the Attacker controls the ship</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Forces</span><span>Land forces of 100–200 pts each. <b>No ships or
+  boats beyond those in the setup</b> (which count as part of neither force).</span></div>
+  <div class="forces">
+    <b>Hostage (Hostage/Advisor)</b>Special Rules: <b>High Standing</b>. <i>Extra:</i> a unit making a
+    <b>Ranged attack against the unit containing this model must first take a Fatigue test with a single
+    d10</b>, and <b>may not attempt the attack at all if it already has 2 Fatigue</b>. The opposing
+    Commander may <b>spend a free action and give one Fortune Token</b> to the controlling player to
+    remove the Hostage. This <b>Ransom requires both the Hostage and the opposing Commander to be out of
+    melee, within 12", and on the same landmass or ship (or on grappled ships)</b>.
+    <b>Musician (Fighting Man)</b>Command unit only, but <b>does not count toward the one-Character-per-unit
+    limit</b>. Main Weapon: Standard Melee Weapons (cannot be upgraded). Special Rules: <b>Inspiring</b>.
+    <i>Extra:</i> at the start of the battle the <b>opposing force is affected by Terror, unless it also
+    has a Musician</b>.
+  </div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/SoP%20202505-digital_tvflePELf.pdf?updatedAt=1747082066409">2025 Summer of Plunder kit</a>. Pairs with 15–21 July objectives.</div>
+</article>
+
+<article class="card" data-type="land" data-src="other" data-name="Quake 1692 Port Royal earthquake Jamaica cityscape events">
+  <h3>Quake 1692</h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag other">Port Royal — different game</span>
+    <span class="tag">30 Pieces of Eight</span><span class="tag">6 turns</span></div>
+  <div class="warn"><b>Note:</b> a <b>Port Royal</b> scenario, not Blood &amp; Plunder. Included because
+  it ships free in the B&amp;P kit and the event table is worth stealing for your own games. By Erich of
+  the Thieves' Harbor blog.</div>
+  <p class="bg">The 1692 Jamaica earthquake destroyed the western portion of Port Royal; roughly 2,000
+  died in the quake and another 3,000 afterward from injuries, disease and rival crews. It came in three
+  escalating parts, with liquefied sand and waves that lifted ships above the buildings. Ideal as the
+  opening game of a new campaign.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>Each player prepares a standard <b>30 Pieces of
+  Eight</b> list. Board <b>2'×2'</b> (larger with more than 2 players), a <b>dense, lively cityscape</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Standard deployment is not used.</b> Each
+  player deploys their <b>Captain/Leader within 4" of opposite board edges</b> (North and South).
+  Remaining crew are <b>scattered 1d10" from the board centre</b> — roll a d10, the triangle's top gives
+  direction, the number gives distance in inches. Models may land in buildings, on terrain, etc. In
+  <b>each board quarter, scatter a Plunder Token 1d5" from that quarter's centre</b> (4 total).</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>6 turns, but <b>crews cannot withdraw and do not roll Strike Tests</b> — they must survive.</li>
+    <li>Use the <b>Quake 1692 Events Table</b> instead of the standard one. At the <b>end of Rounds 1, 3 and 5</b>, roll <b>once, twice and three times</b> respectively.</li>
+    <li>Only the <b>Captain/Leader begins active</b>. Other crew are <b>Inactive</b> until a friendly model interacts with them <b>within 1"</b>. <b>Opponents cannot attack or interact with Inactive crew.</b></li></ul></span></div>
+  <div class="win"><span class="k">Objective</span><ul>
+    <li>Locate your scattered crew while grabbing Bonus Plunder, which aids the games following the quake.</li></ul></div>
+  <div class="f-row"><span class="k">Post-game</span><span>Characters killed through Event Table tragedies
+  suffer a <b>−2/−20 penalty for Crew/Officers</b> when rolling injuries. Rescued characters gain
+  <b>+1 experience</b>; if the entire crew survives the Captain gains <b>+2</b>. When dividing shares,
+  pay Captain and Officers first, then Crew as best you can, and <b>skip the Mutiny step</b> even if
+  some of the company went unpaid.</span></div>
+  <table>
+    <thead><tr><th>d10</th><th>Event</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><b>Tidal Wave</b> — a wave crashes onto a random east/west edge. All models within <b>8"</b> take an Experience Test; on failure they are <b>pushed 4"</b> away from the edge. Crashing into terrain causes a single Fatigue test. The region floods and is <b>rough terrain until end of turn</b>.</td></tr>
+      <tr><td>2</td><td><b>Aftershocks</b> — all models take an Experience Test; on failure, <b>knocked prone</b>.</td></tr>
+      <tr><td>3</td><td><b>Distraction</b> — a random active member of each crew makes a <b>Resolve Test</b>.</td></tr>
+      <tr><td>4</td><td><b>Falling Debris</b> — a random Character among all forces suffers a <b>2-success Ranged Attack with a Damage bonus of −1</b>.</td></tr>
+      <tr><td>5</td><td><b>Shifting Fortunes</b> — scatter a corpse <b>6"</b> from a random character. Looting it with an Interact Action gains a ring worth <b>1d5 Pieces of Eight</b>.</td></tr>
+      <tr><td>6</td><td><b>Panic</b> — scatter <b>5 Civilians</b> <b>1d10"</b> from board centre. They <b>block line of sight and movement</b> and <b>automatically fail all tests</b>. If killed, replace with a lootable corpse. Killing a Civilian gives that player <b>−2 Fortune Points next turn</b>, and <b>this stacks</b>.</td></tr>
+      <tr><td>7</td><td><b>A Brief Respite</b> — all active characters may <b>remove a point of fatigue</b>.</td></tr>
+      <tr><td>8</td><td><b>Misplaced Munitions</b> — scatter a Plunder Token <b>1d10"</b> from table centre. Looting it grants a <b>peculiar equipment</b> (Core rulebook p.77).</td></tr>
+      <tr><td>9</td><td><b>Debris Cloud</b> — for the next turn treat <b>all range bands as one further</b> for ranged attacks; <b>melee at +1 penalty</b>.</td></tr>
+      <tr><td>10</td><td><b>Liquefaction</b> — a random building sinks. Roll d10: on <b>5+</b> the building and all models and tokens are <b>lost beneath the sands and removed</b>. Otherwise the terrain is destroyed and becomes <b>rough terrain</b>. All models within suffer a <b>4-success Melee attack with a Damage bonus of −1</b>.</td></tr>
+    </tbody>
+  </table>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/SoP%20202505-digital_tvflePELf.pdf?updatedAt=1747082066409">2025 Summer of Plunder kit</a></div>
+</article>
+
+<!-- ═══════════════════ 2024 REPRINTS ═══════════════════ -->
+<h2 class="sect">Book scenarios reprinted free (2024 Summer of Plunder)
+  <span class="sub">Official Firelock content · released publicly with Firelock's permission via Blood &amp; Pigment</span></h2>
+
+<div class="legalnote">These are pages from <i>Raise the Black</i> and <i>No Peace Beyond the Line</i>
+that Firelock allowed Blood &amp; Pigment to publish as free PDFs for the 2024 campaign. They're the only
+paid-book scenarios you can legitimately read for free. <b>None specify points values or player counts</b> —
+Blood &amp; Plunder scenarios are point-agnostic; the campaign's weekly objectives set the size.</div>
+
+<article class="card" data-type="amph" data-src="official" data-name="Beached Ship Shipwrecked Prize wreckers salvage careening tidal flats Raise the Black">
+  <h3>Beached Ship <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">(+ "Shipwrecked Prize" variant)</span></h3>
+  <div class="meta"><span class="tag amph">Amphibious</span><span class="tag official">Official — Raise the Black</span>
+    <span class="tag">6 turns</span></div>
+  <p class="bg">"A ship was damaged during the storm and is either shipwrecked or beached for repairs."
+  The Attackers must navigate treacherous waters to seize valuables among the wreckage; the Defenders
+  have fortified their position on land while awaiting rescue or repairs.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×4' amphibious with a landmass taking up
+  <b>50% of the board and touching 3 sides</b>. Place a ship <b>near the middle of the table, completely
+  on land but touching the shoreline, parallel to the sea edge</b> — this is the Beached Ship. The
+  <b>wind blows from sea towards land</b>.</span></div>
+  <div class="f-row"><span class="k">The ship</span><span>Should have <b>one deck for every two units in
+  the Defender's force</b> (round up, max 4). It is <b>not part of either force</b> — it represents the
+  Defender's beached ship.</span></div>
+  <div class="f-row"><span class="k">Tidal flats</span><span>Models may move into water <b>within 6" of
+  the coastline</b> (instead of the standard 3"). This shallow water is <b>Rough Terrain and gives
+  cover</b>. Water between <b>6" and 3"</b> of the coast is <b>Shoal terrain</b> for ships — and ships
+  still <b>immediately run aground if moved within 3" of the shoreline</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Attacker:</b> all ships within <b>2" of
+  the Attacker's board edge corners</b>. <b>Defender:</b> anywhere on land, but <b>no closer than 4" to
+  the Beached Ship</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender</b> gains a Strike Point if the <b>Attacker has any units on land or on the Beached Ship</b>.</li>
+    <li><b>Attacker</b> gains a Strike Point if they <b>have no unit within 4" of the Beached Ship at the end of turn 3 or later</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Optional</span><span><ul>
+    <li><b>Careening the Hull:</b> the Defender gains a <b>Gun Emplacement with a Medium Cannon per 100 points</b> in their force.</li>
+    <li><b>Wreckers' Salvage Operation:</b> starting with the Defender, alternate placing <b>4 Objective Tokens within 3" of the grounded ship and at least 3" from each other</b>. These count as <b>Prizes</b> (see Search &amp; Recover in <i>No Peace Beyond the Line</i>). The Defender gains a Strike Point for every Prize the Attacker controls. <b>Halve the Beached Ship's Hull Integrity</b> before the game. All Defender units gain <b>Tough</b>.</li></ul></span></div>
+  <div class="f-row"><span class="k">"Shipwrecked Prize" variant</span><span>Original Blood &amp; Pigment
+  content for the 2024 campaign — <b>neither player owns the ship</b>; both have stumbled on the wreck and
+  compete to scavenge it.<ul>
+    <li><b>Deployment:</b> each player gets a <b>6" zone on opposite sides</b>, each with a board segment that is 50% land and 50% water. The ship sits near the centre and <b>both forces start at least 24" apart</b>.</li>
+    <li><b>Objective (replaces both above):</b> at the end of turn 3+, a force gains a Strike Point if the <b>enemy has an unshaken unit within 4" of an objective marker and that force has none within 4" of the same marker</b>.</li>
+    <li>Forces may be <b>100% land, 100% sea, or a mix</b>. If using Wreckers' Salvage, <b>do not give the Defenders Tough</b>.</li>
+    <li><b>Stranded Crew (optional):</b> during deployment each player may place <b>1 unit of 6 Euro Sailors</b> on the beach within 4" of the ship or aboard it, <b>deployed in cover</b>. Once the game starts they are AI-controlled: at the end of each round each unit activates with <b>3 actions</b> in this priority — (1) if at 3+ Fatigue, <b>Rally</b>; (2) <b>never Move or Charge</b>, and when Shaken always go <b>Prone</b>; (3) if in melee, <b>Dedicated Fight Action</b>; (4) <b>Shoot the nearest enemy</b> (no half-shoot actions; ties rolled randomly). Spare actions go to <b>Reload</b>. If using Wreckers' Salvage, give <b>Tough to the Euro Sailors</b> instead of the Defenders.</li></ul></span></div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2024/06/raise-the-black-beached-ship-scenario.pdf">Beached Ship scenario PDF</a> ·
+  <a href="https://bloodandpigment.com/2024/06/13/week-3-shipwrecked-scenario/">event post</a>.
+  <i>Page attribution differs between the blog (RtB p165) and the PDF footer (p169).</i></div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="A Wanted Man Sea Maxwell Wyndham bounty commander objective token">
+  <h3>A Wanted Man — Sea</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official — book reprint</span>
+    <span class="tag">6 turns</span></div>
+  <p class="bg">Players take the roles of bounty-hunting privateers, rival pirates or military forces,
+  each vying to capture Captain Maxwell Wyndham — a dangerous criminal who escaped during the Week 3
+  shipwreck — before he slips away into the Caribbean.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>Whole board is <b>Deep Water</b>, with any extra
+  water terrain at the players' discretion. <b>Wind starts from the Attacker's board edge.</b>
+  <i>(Table size not specified.)</i></span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> within <b>6"</b> of their
+  board edge. <b>Attacker:</b> anywhere <b>at least 24" from the Defender</b>, and <b>may not deploy
+  windward</b>.</span></div>
+  <div class="f-row"><span class="k">Special</span><span>If a Commander is removed as a casualty, <b>each
+  unit in that Commander's force takes one point of Fatigue</b>. If the <b>Defender's</b> Commander is
+  removed, <b>replace the model with an Objective Token</b> — Attacker units in base contact may spend a
+  <b>Standard action to claim it</b>. The <b>Defender's Commander automatically passes any Strike Tests</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender automatically loses</b> if the Attacker controls the Objective Token.</li>
+    <li><b>Attacker</b> gains a Strike Point if <b>their own Commander is removed as a casualty</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Optional</span><span><ul>
+    <li><b>Leaders of Men:</b> both players may include <b>any commander legal for their force at zero cost</b>.</li>
+    <li><b>Hiding on the Coastline:</b> add <b>3 shoals</b>, and the <b>Defender's board edge is impassable</b>.</li>
+    <li><b>Leave Him to Me:</b> any unit containing a commander gains <b>Hard Chargers</b> when charging another unit containing a commander.</li></ul></span></div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2024/07/a-wanted-man-sea-scenario.pdf">A Wanted Man (Sea) PDF</a> ·
+  <a href="https://bloodandpigment.com/2024/07/11/bonus-prize-event-2-a-wanted-man-2024-summer-of-plunder/">event post</a>.
+  <i>Blog cites Raise the Black p162; the PDF footer says No Peace Beyond the Line p162.</i></div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="A Wanted Man Land ambush commander objective token hidden and safe">
+  <h3>A Wanted Man — Land</h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official — Raise the Black p170</span>
+    <span class="tag">6 turns</span></div>
+  <div class="f-row"><span class="k">Table</span><span>3'×4' land. <b>No specific terrain setup required.</b></span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>The Defender deploys all units first</b>,
+  within the <b>central 12"×24"</b> of the board as shown. <b>The Attacker's units are not placed during
+  deployment</b> — they are held off table and <b>move in anywhere along the long board edges during the
+  first turn</b>. Activation Cards are drawn for off-board units at the start of the turn they enter.</span></div>
+  <div class="f-row"><span class="k">Special</span><span>If a Commander is removed as a casualty, <b>each
+  unit in that force takes one point of Fatigue</b>. If the <b>Defender's</b> Commander is removed,
+  <b>replace the model with an Objective Token</b>; Attacker units may spend a <b>Standard action to
+  claim it</b>. The <b>Defender's Commander automatically passes any Strike Tests</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender automatically loses</b> if the Attacker controls the Objective Token.</li>
+    <li><b>Attacker</b> gains a Strike Point if <b>their own Commander is removed as a casualty</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Optional</span><span><ul>
+    <li><b>Leaders of Men:</b> both players may include any Commander legal for their force <b>at zero cost</b>.</li>
+    <li><b>Hidden and Safe:</b> the Defender <b>must include at least one Fortification</b> and <b>deploy their Commander within it</b>.</li>
+    <li><b>Leave Him to Me!:</b> any unit containing a Commander gains <b>Hard Chargers</b> when charging another unit containing a Commander.</li></ul></span></div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2024/07/a-wanted-man-land-scenario.pdf">A Wanted Man (Land) PDF</a></div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="Anchored flagship sail off cove dusk Raise the Black sea">
+  <h3>Anchored</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official — book reprint</span>
+    <span class="tag">6 turns</span></div>
+  <p class="bg">The Defender begins anchored while the Attacker closes slowly on their prey — a scenario
+  that rewards skilled sailing on both sides.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>Whole board is <b>Deep Water</b>, extra water
+  terrain at players' discretion. <b>The Defender picks a board edge</b> — that edge is near the coastline
+  and <b>impassable</b>. The <b>wind starts from the edge opposite the Defender's</b>.
+  <i>(Table size not specified.)</i></span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender:</b> within <b>6"</b> of their
+  board edge, <b>all ships at Anchored</b>. <b>Attacker:</b> anywhere <b>at least 24" from the
+  Defender</b>, ships at the <b>lowest Sail Setting above 0"</b>. The <b>Defender's ships may sail off
+  the edge opposite their deployment edge</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender</b> gains a Strike Point if the <b>Attacker has a unit on the Defender's flagship</b>.</li>
+    <li><b>Attacker</b> gains a Strike Point at the end of turn 3+ if the <b>Defender's flagship is at max sail setting and Sailing Large</b>.</li>
+    <li><b>Attacker immediately loses</b> if the Defender <b>sails their flagship off the board</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Optional</span><span><ul>
+    <li><b>Cove:</b> the game is in a deep-water cove. Add a <b>shoal</b>. The Defender's edge and the <b>two adjacent sides</b> are near shore and impassable — any ship passing <b>within 3" must test to Run Aground</b>. The <b>map may not be scrolled</b>. The Defender may sail off the one edge not near a shoreline.</li>
+    <li><b>Dusk:</b> use the <b>Sunset Limited Visibility</b> rule, starting at <b>20"</b> of visibility.</li></ul></span></div>
+  <div class="src">Source: shares the <a href="https://bloodandpigment.com/wp-content/uploads/2024/07/a-wanted-man-sea-scenario.pdf">A Wanted Man (Sea) PDF</a></div>
+</article>
+
+<article class="card" data-type="land sea amph" data-src="official" data-name="Escort Wyndham trial gallows No Peace Beyond the Line">
+  <h3>Escort <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— Land / Amphibious / Sea</span></h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag amph">Amph</span><span class="tag sea">Sea</span>
+    <span class="tag official">Official — NPBtL pp.213–215</span></div>
+  <div class="warn"><b>Rules text not recoverable.</b> The free PDF is an image-only scan — text
+  extraction returns nothing and direct download is blocked. <b>Download it and read it yourself</b>;
+  all three variants differ and shouldn't be guessed at.</div>
+  <p class="bg">The Defender is escorting the captured Captain Maxwell Wyndham to his trial; the Attacker
+  represents Wyndham's loyal crew, attempting to break him free.</p>
+  <div class="f-row"><span class="k">Terrain tip</span><span>From the original campaign post: on Land or
+  Amphibious versions, <b>place some gallows at the final destination</b>. As long as the distance matches
+  reaching the board edge, requiring the Defender to reach the gallows adds real visual appeal.</span></div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2024/07/Blood-Plunder-No-Peace-Beyond-the-Line-ESCORT-scenario.pdf">Escort scenario PDF</a> ·
+  <a href="https://bloodandpigment.com/2024/07/24/bonus-prize-the-end-is-nigh/">event post</a></div>
+</article>
+
+<!-- ═══════════════════ FIRELOCK STANDALONE ═══════════════════ -->
+<h2 class="sect">Firelock's free standalone scenarios
+  <span class="sub">Official · permanently hosted on <a href="https://firelockgames.com/pages/downloads">firelockgames.com/pages/downloads</a></span></h2>
+
+<article class="card" data-type="sea" data-src="official" data-name="Ambush at De Los Cayos l'Olonnais Cuba Spanish executioner boats canoes">
+  <h3>Ambush at De Los Cayos</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">200 pts/side</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <p class="bg">After escaping a shipwreck and Spanish capture, François l'Olonnais put to sea in a small
+  vessel obtained by trickery. His captured men, not knowing his fate, told the Spanish he was dead — news
+  that spread through the colonies. L'Olonnais made for De los Cayos on Cuba's north shore, meaning to
+  plunder its shallow-draft barques. Spotted by fishermen who escaped to Havana, the governor — disbelieving,
+  having had letters from Campeche that l'Olonnais was dead — nonetheless sent a ship of ten guns and ninety
+  well-armed men with orders not to return without destroying the rovers, along with an African man to serve
+  as executioner and hang the buccaneers, sparing only the captain to be brought alive to Havana. Forewarned,
+  the pirates did not flee but sought the ship in the river Estera, seizing fishermen to guide them in by
+  night. Arriving after 2 a.m., a prisoner answered the watch's hail that they had seen no pirates.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>At least 4'×6'. <b>One long and two short edges are
+  shorelines</b>; the entire table is <b>navigable water</b>. <b>Wind blows from the long shoreline edge.</b></span></div>
+  <div class="f-row"><span class="k">Forces</span><span><b>Spanish:</b> 200 pts from <b>Guarda Costas</b>
+  or <b>Spanish Militia</b>. Must include a <b>single ship of no more than 10 artillery pieces</b>. Receives
+  a <b>free Captured Merchant Character</b> (Advisors and Hostages, <i>NPBtL</i>) as the executioner — but
+  the <b>+1 to-hit penalty on the unit he joins is ignored</b>. Best represented by a Lancero miniature.<br>
+  <b>French:</b> 200 pts from <b>Flibustiers Nau</b> or <b>French Buccaneers</b>, and should be led by
+  <b>François l'Olonnais</b>. Must include <b>two boats</b> and <b>may not include any ships</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Spanish ship:</b> centre of table, all crew
+  aboard, <b>stern facing the edge with no shoreline</b>, sail setting <b>anchored</b>.<br>
+  <b>French:</b> two boats, all crew aboard, <b>one along each short edge, sterns touching the table
+  edge</b>. Sail setting <b>0"</b>, and <b>no units may begin assigned to the sweeps</b>.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li><b>The table does not scroll.</b> A vessel sailing off a <b>shoreline</b> edge stops there and <b>runs aground</b>. A vessel sailing off the <b>no-shoreline</b> edge has <b>fled and is removed</b>.</li>
+    <li>Pre-daybreak low light, but the buccaneers' battle cries and the ship's size make both visible: <b>all small arms and artillery shooting takes a +1 penalty on turns 1 and 2</b>. This <b>does not affect a weapon's ability to hit at maximum range</b>.</li></ul></span></div>
+  <div class="win"><span class="k">Strike Points</span><ul>
+    <li><b>Spanish</b> gain one if <b>any French units are aboard the Spanish ship at the end of any turn</b>.</li>
+    <li><b>Spanish</b> gain one if <b>the Spanish ship sails off the table</b>.</li>
+    <li><b>French</b> gain <b>two</b> if the Spanish ship sails off the table.</li>
+    <li><b>French</b> gain one if there are <b>no French units aboard the Spanish ship by the end of turn 6</b>.</li>
+    <li><b>French</b> gain one if <b>l'Olonnais is removed as a casualty</b>.</li></ul></div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/BP/BP-Scenario-TLPD_6ASOrqCGw.pdf">Ambush at De Los Cayos PDF</a> ·
+  Suggested lists: <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=1fb61fa2">Spanish</a> ·
+  <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=ac163ea4">French</a></div>
+</article>
+
+<article class="card" data-type="amph" data-src="official" data-name="Tower Ambush watchtower lookout fortification sentries night caught unaware">
+  <h3>Tower Ambush</h3>
+  <div class="meta"><span class="tag amph">Amphibious</span><span class="tag official">Official</span>
+    <span class="tag">any points level</span><span class="tag">2 players</span><span class="tag">5 turns</span></div>
+  <p class="bg">Lookout towers were common throughout the seas, bays and rivers of the new world, and were
+  the first line of defence against raiders. Buccaneer crews attacking Spanish settlements always sought
+  advance intelligence on early-warning systems. This is a typical attack on a watch tower by coastal
+  raiders preparing to sack a larger target.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>4'×4' amphibious. One side must have a <b>land mass
+  taking up 33–50% of the board</b>, and that land (or shoal water touching it) must <b>at least partially
+  touch two opposite table edges</b>. The rest is navigable water. Wind blows in from <b>one of the
+  Attacker's deployment edges (randomly determined)</b>. The <b>Defender receives a free boat of any
+  available type</b>, placed <b>anywhere the water meets the land</b>.</span></div>
+  <div class="f-row"><span class="k">Forces</span><span><b>Attacker:</b> must contain <b>at least one ship
+  or two boats</b>. <b>Defender:</b> must contain <b>at least one size two or larger fortification</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Per the PDF's diagram.<ul>
+    <li>Attacker may deploy <b>ships 3" from any navigable water edge at the beginning of turn two or later</b>.</li>
+    <li>All other Attacker units may enter through <b>any edge along their deployment area</b>; boats may be placed <b>anywhere along either Attacker deployment edge, at least partially within the zone</b>.</li>
+    <li>The <b>Defender's fort must be at least 16" from any board edge</b>, and <b>all Defender units must begin within 3" of a fortification</b>.</li>
+    <li><b>Sentries are placed after both forces have deployed</b>, within <b>6" of a fortification</b> and <b>not within 12" of any enemy unit</b>.</li></ul></span></div>
+  <div class="f-row"><span class="k">Special</span><span>Uses <b>Caught Unaware</b> and <b>Limited
+  Visibility: Night</b> (core rulebook). <b>Begin counting the five turns on the turn after the alarm is
+  sounded.</b></span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Attacker</b> gains a Strike Point for <b>each opposing unit that moves off the table</b>, and one <b>at the end of each turn after turn 3 if they have no unit within 6" of the fort</b>.</li>
+    <li><b>Defender</b> gains a Strike Point for <b>each section of a fortification occupied by the Attacker</b>, and one <b>for each enemy unit occupying the boat</b>. <b>If a fortification is destroyed, the Defender receives two.</b></li></ul></div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/BP/BP-Scenario_Tower-Ambush_K5VqkgMDvs.pdf">Tower Ambush PDF</a> (a rulebook page released as free DLC)</div>
+</article>
+
+<!-- ═══════════════════ BUCCANEER'S COMPANION ═══════════════════ -->
+<h2 class="sect">The Buccaneer's Companion Vol. 1 — a free six-game campaign
+  <span class="sub">Official Firelock · scenarios by Nathaniel Zettle ·
+  <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Download the full campaign PDF</a> ·
+  <a href="https://ik.imagekit.io/firelockgames/DLC/Commanders-and-Characters_hhgOkCU11.pdf?updatedAt=1681316393928">Commanders &amp; Characters PDF</a></span></h2>
+
+<div class="legalnote"><b>The best free thing in Blood &amp; Plunder.</b> Six linked scenarios following
+the 1680–81 South Sea buccaneer raids. The <b>English are always the Attacker and the Spanish the
+Defender</b>, except La Serena, which reverses the roles. Each scenario after the first carries an optional
+<b>Narrative Condition</b> — a bonus or penalty determined by what happened last game. All six run <b>six
+turns</b>. New commanders here share <b>"Shifting Command"</b>: buyable as a much cheaper character version
+limited to <b>1 command point at 0" range</b>, whose unit may not receive command actions from any other
+source.<br><br>
+<b>Note:</b> Firelock's own links broke in their 2025 site migration. The full PDF now lives only on
+Blood &amp; Pigment's mirror, linked above. It is still official Firelock content.</div>
+
+<article class="card" data-type="land" data-src="official" data-name="Portobello prize hidden building Coxon Spanish militia 1680 buccaneers companion">
+  <h3>1. Portobello <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— February 1680</span></h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">201 v 199 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <div class="f-row"><span class="k">Table</span><span>Entire <b>4'×3'</b> board is land. The Defender
+  places or selects <b>two buildings at least 6" from any table edge and at least 6" from each other</b>,
+  oriented so <b>each has an access point on the centreline</b>. These are objective buildings <b>A</b> and <b>B</b>.</span></div>
+  <div class="f-row"><span class="k">The Prize</span><span>The Defender <b>secretly</b> determines which
+  building holds the Prize, written on a scrap of paper placed face down. When an Attacker unit is in that
+  building <b>and no enemy unit is in the same structure section</b>, the paper is revealed and that unit
+  <b>immediately possesses the Prize</b>.<br>
+  The holder gains <b>High Standing</b> while carrying it. The unit may <b>spend one action to transfer it
+  to another unit within 1"</b>, and a friendly unit may <b>spend an action to take it</b>. It is
+  <b>dropped when the unit Goes Prone or becomes Shaken</b> (a Shaken unit cannot possess it and drops it
+  before retreating). Once dropped, <b>any non-Shaken unit not in melee may take an action to possess
+  it</b>. A Prize dropped in a Fortification <b>counts as possessed by whichever force controls that
+  structure</b>; if no units are inside, nobody controls it.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>The Defender chooses a board edge; the Attacker
+  takes the opposite. <b>One in every three Attacker units (round down) is not placed</b> — instead moved
+  on from the Attacker's edge in turn 1, though <b>Activation Cards are still drawn for them at the start
+  of turn 1</b>. All other units set up <b>within 3"</b> of their edge. Attacking units using <b>Lay in
+  Wait</b> must set up <b>at least 9" from a possible objective</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>From turn 4 onwards</b>, the <b>Attacker</b> gains a Strike Point if <b>no attacking unit is within 4" of the Prize</b> — or of a structure that may contain it, if not yet revealed.</li>
+    <li><b>Defender</b> gains a Strike Point <b>at the end of any turn an attacking unit possesses the Prize</b>.</li>
+    <li><b>Both sides lose immediately if the Prize is lost</b> (e.g. left in a burning building).</li>
+    <li>If the Prize is <b>deliberately destroyed</b> — the holding unit could flee or fix things and chooses not to — <b>only that player loses</b>.</li></ul></div>
+  <div class="forces">
+    <b>Attacker — English Buccaneers 201 pts</b>John Coxon 25 (Commander) · 6 Veteran Freebooters 48 ·
+    8 Forlorn Hope 56 · 6 Freebooters 36 · 6 Flibustiers 36
+    <b>Defender — Spanish Militia 199 pts</b>Experienced Militia Commander 15 · 8 Milicianos 24 ×4 ·
+    5 Caballeria 30 · 8 Lanceros 40 · 4 Milicianos Artilleros w/ Light Cannon 18
+    <b>Army Scale</b>Attacker: English + French Buccaneers, commanders John Coxon and Robert Allison
+    (Experienced). Defender: Spanish Militia. <b>Freeplay:</b> no special requirements either side.
+  </div>
+  <div class="warn"><b>Balance note:</b> reviewers found the historical lists heavily favour the Spanish —
+  the English must cross 18" toward two objectives without knowing which matters, while outnumbered roughly 2:1.</div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Buccaneer's Companion Vol. 1</a></div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="Navio de Aviso advice ship sloop fluyt frigate Portobello 1680">
+  <h3>2. The Navio de Aviso <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— "Attack the Advice Ship", February 1680</span></h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">302 v 200 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <div class="f-row"><span class="k">Table</span><span>Entire <b>4'×4'</b> board is <b>Deep Water</b>, no
+  additional terrain. <b>Wind blows from a neutral table edge.</b></span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Sloop</b> (Attacker's size 2): within
+  <b>6" of the Attacker's edge</b>. <b>Fluyt</b> (Defender's size 3): on the <b>centreline within 6" of
+  the windward edge</b>, <b>perpendicular to the centreline with the bow pointing toward the Attacker's
+  edge</b>. The <b>Frigate</b> (Attacker's size 3) and its crew <b>do not enter until Turn 4</b>, when it
+  may enter <b>from any board edge on the Attacker's half</b>.</span></div>
+  <div class="win"><span class="k">Victory (no strike points — immediate wins)</span><ul>
+    <li>At the end of <b>turns 1–4</b>, the <b>Defender wins immediately</b> if the sloop is <b>destroyed, captured, or all its original crew are casualties</b>.</li>
+    <li><b>Defender wins immediately at the end of turn 6</b> if the <b>fluyt's hull integrity is above half its starting value</b>.</li>
+    <li><b>Attacker wins immediately</b> if the fluyt is <b>destroyed, captured, or all its original crew are casualties</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Narrative</span><span><ul>
+    <li><b>Inspired by wealth</b> — if the Buccaneers held the Prize at the end of Portobello, their commander gains <b>Inspiring</b> (or <b>Very Inspiring</b> if already Inspiring).</li>
+    <li><b>Questionable command</b> — if the Buccaneers never revealed the Prize at Portobello, <b>any rally test taken as a result of the commander spending a Command Point takes a +1 penalty to resolve</b>.</li></ul></span></div>
+  <div class="f-row"><span class="k">Freeplay</span><span>The Attacker's points limit is <b>50% greater
+  than the Defender's</b>; they must take <b>two ships, one size 2 and one size 3</b>, and the <b>size 2
+  ship may not carry artillery</b>. The Defender must take <b>one size 3 ship</b>.</span></div>
+  <div class="forces">
+    <b>Attacker — English Buccaneers 302 pts</b>6 Sea Dogs 24 w/ Officer (Capt. Alleston) +8, Musket
+    upgrade +4 · 6 Sea Dogs 24 w/ Musket upgrade +4 · Sloop 14 · John Coxon 25 (Commander) ·
+    5 Freebooters 30 · 6 Freebooters 36 · 6 Sea Dogs 24 ×3 · Frigate 21 · 8 medium cannons 40
+    <b>Defender — Armada de Barlovento 200 pts</b>Untested Armada Commander 0 · 5 Marineros 20 ·
+    6 Marineros 24 · 4 Marineros 16 w/ Musket +4 · 4 Marineros 16 w/ Musket +4 · 5 Soldados 30 ×2 ·
+    Fluyt 16 · 8 medium cannons 40
+  </div>
+  <div class="warn"><b>Balance note:</b> reviewers found the English secondary objective — taking the Fluyt
+  with the sloop's skeleton crew — nearly impossible, and felt the English had the edge overall.</div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Buccaneer's Companion Vol. 1</a> ·
+  <a href="https://bloodandpigment.com/2020/09/02/battle-report-the-buccaneers-companion-scenario-ii-the-navio-de-aviso/">battle report</a></div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="El Real Santa Maria Golden Cap daughter rescue watchtowers Sawkins 1680">
+  <h3>3. The Battle of El Real Santa María <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— "Rescue (Golden Cap's Daughter)", April 1680</span></h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">199 v 197 pts</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <div class="f-row"><span class="k">Table</span><span>Entire board is land <i>(size not specified in the
+  scenario text — the campaign's other land scenarios use 4'×3')</i>. After terrain setup the Defender may
+  place the <b>three watchtowers in their force within 3" of their deployment zone</b>.</span></div>
+  <div class="f-row"><span class="k">The daughter</span><span>The Defender's force includes <b>King Golden
+  Cap's daughter for free</b>, following the <b>Captured Merchant Character</b> rules and all Character
+  rules from <i>NPBtL</i> p.155. She <b>cannot be removed as a casualty from a Ranged Attack unless there
+  are no other models left in the unit</b>. <b>Native units may not make Ranged Attacks against a unit
+  containing her</b>, and <b>gain Hard Chargers against any enemy unit containing her</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Per the diagram; <b>the Defender sets up all
+  units first</b>. <b>The Attacker's units are held off table</b> and move in <b>anywhere along the
+  indicated edges during turn 1</b>; Activation Cards are drawn for off-board units at the start of the
+  turn they enter. Attacker cannons entering the board <b>start with 4 Reload markers</b>. A <b>Heavy
+  Cannon</b> may be moved on as a <b>Dedicated action</b>, must be placed <b>within 4" of the board
+  edge</b>, and <b>may not move again for the rest of the game</b>; it <b>cannot be moved into a Structure
+  or Rough terrain</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender</b> gains a Strike Point at the end of any turn where <b>she is attached to an Attacker's unit</b>.</li>
+    <li><b>Attacker</b> gains a Strike Point <b>at the end of turn 6 if she is attached to a Defender's unit</b>.</li>
+    <li><b>Both sides lose immediately if she is removed as a casualty.</b></li></ul></div>
+  <div class="f-row"><span class="k">Narrative</span><span><b>Captured Correspondence</b> — if the
+  Buccaneers captured the Fluyt <b>before Turn 4</b> in the previous scenario, units activating <b>within
+  4" of the Commander's unit gain Scouts</b>.</span></div>
+  <div class="f-row"><span class="k">Freeplay</span><span>Non-Native attacker forces may take <b>Native
+  Archers and Native Warriors as support choices</b>. The Defender <b>must take 3 watch towers each armed
+  with a swivel gun, paying full points</b>.</span></div>
+  <div class="forces">
+    <b>Attacker — English Buccaneers 199 pts</b>Richard Sawkins 10 (Commander) · 6 Freebooters 36 ·
+    6 Freebooters 36 w/ Basil Ringrose 5 · 5 Forlorn Hope 35 · 6 Sea Dogs 24 w/ musket +4 ·
+    6 Sea Dogs 24 · 7 Warrior Archers 35
+    <b>Defender — Spanish Militia 197 pts</b>Experienced Militia Commander 15 · 8 Milicianos (trained) 32 ×3 ·
+    5 Lanceros 25 ×2 · 4 Milicianos Artilleros + Watch Tower w/ Swivel Gun 12 ×3
+    <b>Army Scale</b>Attacker: English Buccaneers, with a Company of Native Warriors and Warrior Archers
+    led by Golden Cap. Defender: Spanish Militia with fortifications.
+  </div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Buccaneer's Companion Vol. 1</a> ·
+  <a href="https://bloodandpigment.com/2020/09/15/battle-report-the-buccaneers-companion-scenario-iii-the-battle-of-el-real-santa-maria/">battle report</a></div>
+</article>
+
+<article class="card" data-type="sea" data-src="official" data-name="Perico Panama Armadilla canoas piraguas Peralta Barahona 1680">
+  <h3>4. The Battle of Perico <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— "Facing Down the Armadilla", Panama, April 1680</span></h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official</span>
+    <span class="tag">300 pts/side</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <div class="f-row"><span class="k">Table</span><span>Entire <b>4'×4'</b> board is <b>Deep Water</b>, no
+  additional terrain. <b>Wind blows towards the Defender's board edge.</b></span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Both sides deploy <b>within 12" of their
+  respective board edge</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender</b> gains a Strike Point at the end of any turn <b>for every enemy unit aboard a ship in the Defender's original force</b>.</li>
+    <li><b>From turn 4 onwards</b>, the <b>Attacker</b> gains a Strike Point if <b>no attacking ship or boat is grappled to a Defender's ship and the Attacker has no units aboard one</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Narrative</span><span><ul>
+    <li><b>Native support</b> — if Golden Cap's daughter was rescued at Santa María, Buccaneer units <b>ignore the first point of fatigue they take</b>.</li>
+    <li><b>Native Ire</b> — if she was not rescued, <b>every Buccaneer unit starts with 1 point of fatigue</b>.</li></ul></span></div>
+  <div class="f-row"><span class="k">Freeplay</span><span>Attacker: <b>no ships size 2 or greater</b>.
+  Defender: <b>at least one size 2 ship</b>.</span></div>
+  <div class="forces">
+    <b>Attacker — English Buccaneers 300 pts</b>Richard Sawkins 10 (Commander) · 7 Sea Dogs 28 +
+    7 Freebooters 42 in a Piragua 7 w/ 4 Swivel guns 16 · 8 Freebooters 48 w/ Peter Harris 4 in a Canoa 2 ·
+    8 Freebooters 48 in a Canoa 2 (×2) · 8 Sea Dogs 32 w/ Musket +4 w/ Basil Ringrose 5 in a Canoa 2
+    <b>Defender — Armada de Barlovento 300 pts</b>Francisco de Peralta 25 · 7 Marineros 28 w/ Musket +4 ·
+    7 Marineros 28 w/ Musket +4 · Bark 8 w/ Reinforced Bulkheads 3 w/ 4 Light Cannons 14 ·
+    7 Marineros 28 w/ Son of Neptune (Alm. Don Jacinto de Barahona) +3 · 6 Soldados 36 ·
+    Bark 8 w/ Reinforced Bulkheads 3 w/ 4 Light Cannons 14 · 6 Marineros 24 w/ Son of Neptune
+    (Don Diego de Carabaxal) +3 · 7 Soldados 42 · Bark 8 w/ Reinforced Bulkheads 3 w/ 4 Light Cannons 14
+    <b>Army Scale</b>Attacker: English Buccaneers — commanders John Coxon, Peter Harris, Richard Sawkins;
+    <b>no Bartholomew Sharp</b>; 2 Piraguas and many canoas. Defender: Armada de Barlovento — 3 Brigantines
+    or Corvettes, Alm. Don Jacinto de Barahona (Seasoned), Don Diego de Carabaxal (Untested), Francisco de Peralta.
+  </div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Buccaneer's Companion Vol. 1</a> ·
+  <a href="https://bloodandpigment.com/2020/10/01/battle-report-buccaneers-companion-scenario-iv-the-battle-of-perico/">battle report</a>.
+  Reviewers played it at 400 pts and found it balanced, if asymmetric.</div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="La Serena cavalry caballeria Bartholomew Sharp objective markers 1680">
+  <h3>5. La Serena <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— December 1680</span></h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">200 pts/side</span><span class="tag">2 players</span><span class="tag">6 turns</span>
+    <span class="tag">roles reversed</span></div>
+  <div class="warn"><b>Roles reverse here</b> — the <b>Spanish are the Attacker</b>. This is also the
+  infamous cavalry scenario: the historical list calls for roughly <b>26 mounted models</b>, a real
+  collection barrier.</div>
+  <div class="f-row"><span class="k">Table</span><span>Entire <b>4'×3'</b> board is land, but <b>may not
+  include any structures</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>The Defender picks <b>one board corner</b>; the
+  Attacker takes the opposite. Before any units are placed, an <b>objective marker goes at board centre</b>,
+  with <b>two more each 12" away on either side along the centreline</b>. <b>No marker may sit on impassable
+  terrain.</b></span></div>
+  <div class="win"><span class="k">Objective</span><ul>
+    <li>A force gains a Strike Point if <b>the enemy has unshaken units within 4" of any two objective markers while that force has no unshaken units within 4" of the same markers</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Narrative</span><span><b>Advanced warning</b> — if the Buccaneers
+  failed to capture or destroy at least one Armada ship at Perico, the <b>Buccaneers (Defender) must deploy
+  their entire force before the Spanish Militia deploy any units</b>.</span></div>
+  <div class="f-row"><span class="k">Freeplay</span><span>Attacker <b>must have more mounted units than
+  foot units</b>. Defender <b>may not select any mounted units</b>.</span></div>
+  <div class="forces">
+    <b>Attacker — Spanish Militia (Cinquentaine) 200 pts</b>Experienced Spanish Militia Commander 15 w/
+    horse 1 · 5 Caballeria 30 ×2 · 5 Caballeria Lancero 30 ×2 · 8 Hostigadores 32 ×2
+    <b>Defender — English Buccaneers 200 pts</b>Bartholomew Sharp 27 · 7 Freebooters 42 ·
+    6 Freebooters 36 ×2 · 8 Sea Dogs 24 w/ Muskets 4 w/ Reformado (John Cox) +3 · 8 Sea Dogs 24 w/ Muskets 4
+  </div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Buccaneer's Companion Vol. 1</a> ·
+  <a href="https://bloodandpigment.com/2020/11/19/battle-report-buccaneers-companion-scenario-v-la-serena/">battle report</a></div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="Arica defend the fort Watling Sharp fortification size 3 1681">
+  <h3>6. Arica <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— "Defend the Fort", January 1681</span></h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">200 pts/side</span><span class="tag">2 players</span><span class="tag">6 turns</span></div>
+  <div class="f-row"><span class="k">Table</span><span>Entire <b>4'×3'</b> board is land. The <b>Defender
+  must place a fortification of minimum size 3 in their deployment zone</b>; the rest of the terrain is set
+  up by mutual agreement. The <b>fortification sections have Fortitude 6 and Integrity 4</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Attacker:</b> within <b>6"</b> of their
+  table edge. <b>Defender:</b> within <b>6"</b> of theirs, and <b>defending units may also deploy inside
+  the fortification</b>.</span></div>
+  <div class="win"><span class="k">Objectives</span><ul>
+    <li><b>Defender</b> gains a Strike Point at the end of any turn in which <b>an unshaken attacking unit occupies any section of the fort</b>.</li>
+    <li><b>From turn 4 onwards</b>, the <b>Attacker</b> gains a Strike Point at the end of any turn where <b>at least one attacking unit is not fully within the Defender's half of the board</b>.</li></ul></div>
+  <div class="f-row"><span class="k">Narrative</span><span><b>Caught unprepared</b> — if the Buccaneers
+  inflicted <b>50% casualties</b> on the Spanish Militia at La Serena, <b>all Spanish artillery begins this
+  game with 4 reload markers</b>.</span></div>
+  <div class="f-row"><span class="k">Freeplay</span><span>Attacker: <b>no explosive upgrades</b>. Defender:
+  a structure representing a fort of <b>minimum size 3</b> in their deployment zone.</span></div>
+  <div class="forces">
+    <b>Attacker — English Buccaneers 200 pts</b>John Watling 15 (Commander) · 7 Freebooters 42 ·
+    6 Freebooters 36 w/ Basil Ringrose 5 · 7 Freebooters 42 · 8 Sea Dogs 24 w/ Muskets 4 w/ Bartholomew
+    Sharp +4 · 8 Sea Dogs 24 w/ Muskets 4
+    <b>Defender — Spanish Militia 200 pts</b>Seasoned Militia Commander (don Gaspar de Ovieda) 25 ·
+    8 Milicianos 24 ×4 · 6 Caballeria 36 · 4 Milicianos Artilleros w/ Light Cannon 13 w/ Master Gunner
+    (Capitán don Matías de Rivera) +4 · 4 Milicianos Artilleros w/ Light Cannon 13 ×2
+  </div>
+  <div class="warn"><b>Known issues flagged by reviewers:</b> the scenario calls for a <b>size 3 fort but
+  the deployment diagram shows the Stone Tower Fort, which is size 2</b>; the <b>fort's points cost isn't
+  accounted for</b> in the Defender's historical list; and the Spanish commander is written as a generic
+  Seasoned Commander despite existing as a proper profile. Reviewers found it a blowout in the Spanish
+  favour as written — worth house-ruling.</div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2021/09/Buccaneers-Companion-vol-1.pdf">Buccaneer's Companion Vol. 1</a> ·
+  <a href="https://bloodandpigment.com/2020/12/10/battle-report-buccaneers-companion-scenario-vi-arica/">battle report</a></div>
+</article>
+
+<!-- ═══════════════════ SPECIALS ═══════════════════ -->
+<h2 class="sect">Specials, one-offs and Halloween games
+  <span class="sub">Official Firelock and community releases</span></h2>
+
+<article class="card" data-type="sea" data-src="official" data-name="Rackham Bonny Read Last Battle Barnet Dry Harbour drunk night 1720 Calico Jack">
+  <h3>Rackham, Read and Bonny's Last Battle</h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag official">Official — Game Trader Mag #284</span>
+    <span class="tag">115 pts/side</span><span class="tag">2 players</span><span class="tag">6 turns</span>
+    <span class="tag">Dry Harbour, 20 Oct 1720</span></div>
+  <p class="bg">"The law has finally caught up to Calico Jack Rackham! Jonathan Barnet and his crew have
+  found Rackham and the infamous Anne Bonny and Mary Read during a quiet night off the Jamaican coast. The
+  pirate hunters approach and hail Rackham's sloop, but the pirates are drunk and rebuff Barnet's call to
+  surrender. The British let loose a broadside and the short battle is joined."</p>
+
+  <div class="f-row"><span class="k">Table</span><span>3'×3'. <b>The whole board is Deep Water.</b> Wind
+  starts from the edge <b>opposite the Defender's</b>.</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span><b>Defender (Pirates):</b> ship <b>anchored
+  within 6" of their board edge</b>. <b>Attacker (British):</b> ships <b>at least 24" from the
+  Defender</b>, at their <b>lowest sail setting above 0"</b>.</span></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li>Night, with most lights doused: <b>the range of all attacks is limited to 12" or less</b>.</li>
+    <li><b>Each Defender unit is Drunk</b> — a <b>−1 bonus to Resolve</b> and a <b>−1 bonus to Fight Skill</b>, but a <b>+1 penalty to Shoot Skill, all Saves, and every other Test</b> made with that unit.</li>
+    <li><b>The board may be scrolled.</b></li></ul></span></div>
+  <div class="win"><span class="k">Victory — no Strike Points, both sides fight to the death</span><ul>
+    <li><b>Defender wins</b> at the end of <b>turn 3 or later</b> if their <b>Flagship is at least 12" from the Attacker's Flagship</b> — the pirates disappear into the night.</li>
+    <li><b>Attacker wins immediately</b> if they <b>eliminate Rackham, Bonny and Read</b>.</li></ul></div>
+  <div class="forces">
+    <b>Attacker — British Militia (Pirate Hunters), 23 models, 115 pts</b>Captain Jonathan Barnet 10 ·
+    8 Sea Dogs 32 · 8 Sea Dogs without Pistols 24 · 6 English Militia 18 · Balandra (or any 3-deck ship) 10 ·
+    Three Pairs of Light Cannons +21
+    <b>Defender — Golden Age Pirates, 20 models, 115 pts</b>Jack Rackham 8 · 6 Pirates 18 ·
+    7 Pirates 21 w/ Anne Bonny +3 · 6 Pirates 18 w/ Mary Read +3 w/ Buccaneer Guns +6 · Bermuda Sloop 13 ·
+    Two Pairs of Light Cannons +14 · 2 Swivels +8 · Reinforced Bulkheads +3
+    <b>Captain Jonathan Barnet (exclusive commander)</b>Privateer / Merchant Captain / Pirate Hunter,
+    10 pts, <b>1 Command Point</b>. <i>Unwavering:</i> when activated, his unit immediately removes one
+    point of Fatigue if Shaken at the start of its activation. <i>Aggressive Commander:</i> all men within
+    Command Range gain <b>Hard Chargers</b>.
+    <a href="https://bloodandpigment.com/wp-content/uploads/2024/10/Jonathan-Barnet-Commander-Card.jpg">Commander card</a>
+  </div>
+  <div class="src">Written by Guy Rheuark &amp; Joseph Forster, reprinted with permission.
+  <a href="https://bloodandpigment.com/wp-content/uploads/2024/10/Rackham-Read-and-Bonnys-Last-Battle-print.pdf">Print PDF (full rules)</a> ·
+  <a href="https://bloodandpigment.com/2024/10/07/rackham-bonny-reads-last-battle-special-blood-plunder-scenario/">article</a> ·
+  lists: <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=7eccf017">Pirates</a> /
+  <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=b7e4df78">British</a>.
+  About 90 minutes to play.</div>
+</article>
+
+<article class="card" data-type="land" data-src="official" data-name="Treasure Haunt Halloween 2017 spirits curse ghosts spectral fog multiplayer">
+  <h3>Treasure Haunt <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— 2017 Halloween special</span></h3>
+  <div class="meta"><span class="tag land">Land</span><span class="tag official">Official</span>
+    <span class="tag">65 pts each</span><span class="tag">2–4 players</span><span class="tag">6 turns</span></div>
+  <p class="bg">A Spanish treasure galleon was wrecked by mysterious forces off the coast of Florida, last
+  seen in "la tierra de Sangre y Saqueo" — land the native inhabitants held cursed and forbidden. The
+  salvage crew sent to recover the riches was lost; buccaneers intercepted the Spanish and took their
+  vessel, then made port at Tortuga. Tales of the forsaken galleon and its hoard spread through the city
+  like a plague, and every enterprising captain on the island set sail. None were prepared for the horrors
+  on that blighted land.</p>
+
+  <div class="f-row"><span class="k">Table</span><span>3'×3', <b>entirely land terrain</b>. <b>All players
+  play against each other and all count as the attacker.</b> Place <b>4 treasure markers</b> per the
+  deployment diagram (printed measurements: <b>12", 18", 6", 18"</b>).</span></div>
+  <div class="f-row"><span class="k">Deployment</span><span>Each player rolls a <b>d10</b>. Starting with
+  the highest, each chooses a <b>table corner</b> and deploys their entire force <b>within 6"</b> of it.</span></div>
+  <div class="win"><span class="k">Victory</span><ul>
+    <li>The <b>first player to get two treasures off the table through their own deployment corner</b> wins.</li>
+    <li>Otherwise, the player <b>holding the most treasures at the end of turn 6</b> wins.</li></ul></div>
+  <div class="f-row"><span class="k">Special</span><span><ul>
+    <li><b>Low Visibility (Spectral Fog):</b> limited visibility rules apply; <b>visibility limited to 12"</b>.</li>
+    <li><b>No Quarter:</b> with such a haul at stake, no crew will surrender — not even before the supernatural.</li></ul></span></div>
+  <div class="f-row"><span class="k">Carrying treasure</span><span>A unit in base contact may <b>spend an
+  action to pick up</b> a treasure, and may <b>only carry one</b>; the marker is removed from the table. It
+  may <b>voluntarily drop it as a free action during its activation</b> (placed in base contact with any
+  model in the unit). A unit that takes a <b>Move action from becoming shaken is forced to drop it</b>
+  (before moving). A unit that becomes shaken and <b>elects to go Prone does not drop it</b>.</span></div>
+  <div class="f-row"><span class="k">The Curse</span><span>If a unit <b>moved within 4" of a treasure
+  marker during its activation</b>, roll a <b>d10</b> at the end of that activation:
+  <table><thead><tr><th>d10</th><th>Result</th></tr></thead><tbody>
+    <tr><td>1</td><td>A <b>four-model</b> spirit unit awakens to guard the treasure and <b>immediately charges</b> the unit that rolled this.</td></tr>
+    <tr><td>2–4</td><td>A <b>two-model</b> spirit unit awakens and <b>immediately charges</b>.</td></tr>
+    <tr><td>5–7</td><td>A horrifying howl — the unit takes a <b>Fatigue test with three d10</b>.</td></tr>
+    <tr><td>8–10</td><td>An ominous presence — roll a <b>Fatigue Test with one d10</b>.</td></tr>
+  </tbody></table></span></div>
+  <div class="f-row"><span class="k">Spirits</span><span>Appear in base contact with the unit that woke
+  them, <b>treated as a charge</b>, immediately initiating melee — <b>the charged unit may Defensive
+  Attack</b>. Spirits try to stay engaged with the unit that woke them and <b>always stay engaged if it
+  flees from being Shaken</b>. If that unit <b>Routs or is wiped out, the spirits disappear</b>. In ongoing
+  melee they <b>activate with a single Fight action at the start of every turn, before any cards are
+  drawn</b>. A unit in melee with spirits <b>always rolls an additional d10 for any Fatigue Test caused by
+  fighting them</b>. Spirits arriving via an <b>event</b> activate at the start of the turn before cards
+  are drawn and take <b>a single move or charge toward the closest unit they can see — if able, they must
+  charge</b>.<br><br>
+  <b>Profile:</b> Inexperienced · <b>Ethereal Blades</b> (Heavy Melee Weapons) · Fight <b>7/4</b> ·
+  Shoot <b>–/3</b> · Resolve <b>–</b>. <i>Ethereal:</i> automatically passes any Fatigue Test; ignores all
+  terrain movement penalties <b>including impassable</b>; and is <b>always considered to have all models in
+  cover</b>.</span></div>
+  <div class="f-row"><span class="k">Event table</span><span>Replaces the rulebook chart whenever any
+  player draws an event card:
+  <table><thead><tr><th>d10</th><th>Event</th></tr></thead><tbody>
+    <tr><td>1–2</td><td><b>Cursed!</b> — the drawing player randomly selects one of their units; it rolls <b>two dice on The Curse chart and applies the lowest</b>.</td></tr>
+    <tr><td>3–4</td><td><b>Spirits Appear</b> — randomly select a treasure marker and place a unit of <b>three spirits</b> in contact with it. This <b>includes a treasure being carried</b> — that unit is treated as charged but <b>may not make a Defensive Attack</b>.</td></tr>
+    <tr><td>5–6</td><td>A randomly selected friendly unit hears a horrifying howl — <b>three d10 Fatigue test</b>.</td></tr>
+    <tr><td>7–8</td><td><b>Ominous Presence</b> — a randomly selected friendly unit takes a <b>single d10 Fatigue test</b>.</td></tr>
+    <tr><td>9</td><td><b>Spectral Fog Deepens</b> — <b>decrease</b> visibility by 4".</td></tr>
+    <tr><td>10</td><td><b>Spectral Fog Lessens</b> — <b>increase</b> visibility by 4".</td></tr>
+  </tbody></table></span></div>
+  <div class="src">Source: <a href="https://bloodandpigment.com/wp-content/uploads/2023/10/201710-Halloween.pdf">Treasure Haunt PDF</a> (Firelock, archived by Blood &amp; Pigment)</div>
+</article>
+
+<article class="card" data-type="sea" data-src="fan" data-name="The Ghost Ship Halloween 2022 solo cooperative derelict fatigue resolve">
+  <h3>The Ghost Ship <span style="font-weight:400;font-size:.85rem;color:var(--ink2)">— 2022 Halloween special</span></h3>
+  <div class="meta"><span class="tag sea">Sea</span><span class="tag fan">Fan-made</span>
+    <span class="tag">100 pts solo / 50 per player co-op</span><span class="tag">1+ players, co-op</span></div>
+  <div class="warn"><b>Partial entry.</b> The full rules exist only as a flattened image and a Google Drive
+  PDF — neither yields extractable text. The <b>table size, deployment distances, turn count and the Ghost
+  Ship movement/Fatigue tables are not reproducible here</b>. Grab the source below.</div>
+  <p class="bg">In the 17th-century Caribbean, ghost ships were common but mundane — vessels abandoned
+  because of violence, disease, weather or bad luck. Buccaneer crews made them regularly when merging crews
+  or abandoning a sloop for a captured prize. Found ships were reclaimed and salvaged, common enough that
+  every colonial nation had laws and courts to establish a claim was Salvage and not Piracy. This Ghost
+  Ship is <b>not supernatural in origin — it is simply a ship without a crew</b>, found in heavy fog,
+  sitting low in the water, sails in disarray, decks void of life.</p>
+
+  <div class="f-row"><span class="k">Setup</span><span>You need a ship to serve as the Ghost Ship — a
+  <b>Brigantine or Light Frigate</b> is recommended, but any will do. There is <b>no opposing player
+  force</b>.</span></div>
+  <div class="f-row"><span class="k">Core mechanic</span><span>The <b>Ghost Ship's movements are determined
+  by a card drawn from your deck at the start of the first, second and last activation of a turn</b>. In
+  co-op play, <b>alternate which player's deck the Ghost Ship draws from</b>.</span></div>
+  <div class="f-row"><span class="k">Objective</span><span>Board and claim the Ghost Ship as salvage
+  <b>before your crew loses its nerve</b>. The opposition is <b>Fatigue and Resolve pressure, not
+  casualties</b>.</span></div>
+  <div class="f-row"><span class="k">List building</span><span>Good <b>Resolve</b>, plenty of <b>Rally</b>
+  actions and rules like <b>Tough</b> that manage Fatigue are very helpful. <b>Muskets, Pistols, Swivels
+  and even Cannons are almost useless</b> — though you can try to slow the Ghost Ship by targeting its
+  rigging. Large units don't help; <b>small units are fine</b>. You will burn through <b>Fortune
+  Points</b>. Co-op options: <b>50 pts per player sharing a ship</b>, or a <b>150-pt force</b> with one
+  player running the commander's unit and the other running everything else. Plays in under an hour.</span></div>
+  <div class="src">By Guy Rheuark, Blood &amp; Pigment.
+  <a href="https://bloodandpigment.com/2022/10/24/the-ghost-ship-scenario-a-blood-plunder-halloween-special/">Article</a> ·
+  <a href="https://drive.google.com/file/d/1Xm9wr6WBpDHzloaqnTX7lpzYXsvi1ao4/view">Scenario PDF</a> ·
+  <a href="https://bloodandpigment.com/wp-content/uploads/2022/10/Ghost-Ship-Scenario-v7.jpg">Scenario sheet (image)</a>.
+  Sample lists: <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=31063d3b">French Buccaneers</a> ·
+  <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=0d3e4770">Native American</a> ·
+  <a href="https://forcebuilder.bloodandplunder.com/index.php?builder&forceid=18c5445f">English Royal Navy</a>.
+  The author notes it can be modified into a competitive two-player fight over the Ghost Ship.</div>
+</article>
+
+<!-- ═══════════════════ SOLITAIRE ═══════════════════ -->
+<h2 class="sect">Free official solo rules
+  <span class="sub">Not a scenario — a rules module that lets you play any of the above alone</span></h2>
+
+<article class="card" data-type="land sea amph" data-src="official" data-name="Solitaire solo rules OPFOR AI opponent priority columns">
+  <h3>Blood &amp; Plunder Solitaire</h3>
+  <div class="meta"><span class="tag official">Official</span><span class="tag">1 player</span>
+    <span class="tag">works with any scenario</span></div>
+  <p class="bg">A free rules module letting one player play against an AI-controlled <b>Opposing Force
+  (OPFOR)</b>. Any rule not specifically altered works as normal, and Firelock notes you should exercise
+  common sense to help the AI along.</p>
+
+  <div class="f-row"><span class="k">Setup</span><span>Build <b>2 legal armies</b> and choose <b>any
+  scenario</b>. No setup changes beyond having to build your opponent's army. <b>These rules work best
+  when the OPFOR plays the defender.</b></span></div>
+  <div class="f-row"><span class="k">Turn</span><span><b>No hand is drawn for the OPFOR.</b> After you
+  choose your initiative card, the <b>top card of the deck</b> is the OPFOR's. Initiative then proceeds
+  normally.<br>
+  <b>Activation priority:</b> units engaged → units with enemies less than 12" away → all other units.
+  Ties broken randomly.</span></div>
+  <div class="f-row"><span class="k">Which column</span><span>The <b>printed number on the OPFOR's
+  initiative card</b> plus the <b>strike-point state</b> decide which action column to use:
+  <table><thead><tr><th>OPFOR card</th><th>Fewer strike pts</th><th>Tied</th><th>More strike pts</th></tr></thead>
+  <tbody>
+    <tr><td>11–13</td><td>A</td><td>A</td><td>B</td></tr>
+    <tr><td>5–10</td><td>A</td><td>B</td><td>B</td></tr>
+    <tr><td>1–4</td><td>B</td><td>B</td><td>C</td></tr>
+  </tbody></table></span></div>
+  <div class="f-row"><span class="k">Action columns</span><span>Start at priority 1 and work down until you
+  reach an action the unit <b>can</b> perform; do it, then <b>start again at the top</b> for the next
+  action, until the unit is out of actions. Then it spends command points (choosing the unit <b>closest to
+  the activated command unit</b> and assigning it an action from the Command column, repeating until out)
+  or ends its activation.
+  <table><thead><tr><th>#</th><th>A — PUSH!</th><th>B — HOLD</th><th>C — FALL BACK!</th><th>Command Pts</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>Shoot &lt;12"</td><td>Shoot &lt;20"</td><td>Shoot</td><td>Rally</td></tr>
+    <tr><td>2</td><td>Grapple</td><td>Charge</td><td>Retreat Move</td><td>Reload</td></tr>
+    <tr><td>3</td><td>Charge</td><td>Reload</td><td>Repair</td><td>Repair</td></tr>
+    <tr><td>4</td><td>Aggressive Move</td><td>Tactical Move</td><td>Rally</td><td>Shoot</td></tr>
+    <tr><td>5</td><td>Fight</td><td>Fight</td><td>Reload</td><td>Fight</td></tr>
+    <tr><td>6</td><td>Reload</td><td>Rally</td><td>Fight</td><td>Tactical Move</td></tr>
+    <tr><td>7</td><td>Rally</td><td>Repair</td><td>—</td><td>—</td></tr>
+    <tr><td>8</td><td>Repair</td><td>—</td><td>—</td><td>—</td></tr>
+  </tbody></table></span></div>
+  <div class="f-row"><span class="k">Movement</span><span><ul>
+    <li><b>Aggressive:</b> move directly toward the nearest enemy; end in cover if available, but <b>priority is ending as close to the enemy as possible</b>.</li>
+    <li><b>Tactical:</b> move toward the nearest objective not under this force's control, then toward the closest enemies, taking maximum advantage of cover.</li>
+    <li><b>Retreat:</b> move out of Line of Sight of as many enemies as possible, prioritising the closest; seek the best cover, priority being an objective and then the home board edge.</li></ul></span></div>
+  <div class="f-row"><span class="k">Attacks</span><span>When charging, <b>target the closest unit</b>. For
+  Shoot actions, choose <b>first units in the open with a target number under 9, then the unit with the
+  lowest modified target number</b>; <b>always prioritise units that have not yet activated</b>; ties
+  random. <b>OPFOR units always make defensive attacks if possible.</b></span></div>
+  <div class="f-row"><span class="k">Exceptions</span><span><ul>
+    <li><b>Gun Crews:</b> units on artillery <b>never take move actions</b>, except to move field-carriage guns into line of sight.</li>
+    <li><b>Guerillas</b> (Hidden, Elusive, Skirmishers, Cunning and/or Quick): use those rules as often as possible; <b>only ever move within 8" of a unit that has Fatigue</b>.</li>
+    <li><b>Shooting Specialists</b> (Drilled, Expertly Drilled or Marksmen) with 2+ actions: <b>use those actions only if they reduce the target number to 8 or less</b>.</li>
+    <li><b>Aggressive Units</b> — not armed with Muskets/Carbines/Bows, not crewing artillery, and armed with explosives (even if also carrying firearms) — <b>always prioritise moving and charging before shooting</b>.</li>
+    <li><b>Bayonets:</b> units with Bayonets and no loaded shooting weapons <b>plug bayonets within 8" of opposing units</b>, and while fixed <b>count as Aggressive units</b>.</li>
+    <li><b>Cavalry:</b> mounted units <b>always attempt to stay out of LoS</b>, but priority is still to close on their target.</li></ul></span></div>
+  <div class="f-row"><span class="k">Events &amp; ships</span><span>If the OPFOR plays an event card,
+  <b>set it aside and apply it at the beginning of the next turn</b>, then draw a new card. Your own event
+  cards work normally. It's recommended <b>neither force uses Fortune Points</b>. OPFOR ships <b>always use
+  the second ship movement on a d10 roll of 6+, or on their second-to-last movement, whichever comes
+  first</b>:
+  <table><thead><tr><th>OPFOR card</th><th>Fewer strike pts</th><th>Tied</th><th>More strike pts</th></tr></thead>
+  <tbody>
+    <tr><td>11–13</td><td>Toward closest player ship</td><td>Toward closest player ship</td><td>Max broadside potential</td></tr>
+    <tr><td>5–10</td><td>Max broadside potential</td><td>Max broadside potential</td><td>Away from player ships</td></tr>
+    <tr><td>1–4</td><td>Max broadside potential</td><td>Away from player ships</td><td>Away from player ships</td></tr>
+  </tbody></table></span></div>
+  <div class="src">Source: <a href="https://ik.imagekit.io/firelockgames/DLC/BP/BP-Solitaire-compressed_zHxGuWe8iH.pdf">Solitaire Rules PDF</a> ·
+  <a href="https://ik.imagekit.io/firelockgames/DLC/BP/BP-Reglas_Solitario_9EzwR4-LqR.pdf">Spanish edition</a></div>
+</article>
+
+<footer>
+  <h3 style="margin-top:0">What's only in the paid books</h3>
+  <p>For completeness — these scenario <i>names</i> are public, but the rules are not free anywhere:</p>
+  <table>
+    <thead><tr><th>Book</th><th>Structure</th><th>Scenarios</th></tr></thead>
+    <tbody>
+      <tr><td><b>Core Rulebook</b><br><a href="https://firelockgames.com/products/blood-plunder-rulebook-pdf">$15 PDF</a></td>
+        <td>5 × Land/Amph/Sea = "15"</td>
+        <td>Breakthrough · Raid · Control the Field · Take and Hold · Encounter. The starter/softcover adds <b>Blackbeard's Final Battle</b>.</td></tr>
+      <tr><td><b>No Peace Beyond the Line</b></td><td>5 × Land/Amph/Sea = 15</td>
+        <td>Raze · <b>Escort</b> (free above, image-only) · Rescue · Search &amp; Recover · Plunder</td></tr>
+      <tr><td><b>Raise the Black</b></td><td>5 Sea + 5 Amph + 5 Land</td>
+        <td><i>Sea:</i> A Wanted Man · Anchored · Chase's End · Listless · The Storm<br>
+            <i>Amph:</i> A Wanted Man · Capture the Surgeon · Capture the Settlement · Total War · Beached Ship<br>
+            <i>Land:</i> A Wanted Man · Ambush · Hostage Raid · Capture the Settlement · Total War<br>
+            <span style="color:var(--accent)">A Wanted Man, Anchored and Beached Ship are free above.</span></td></tr>
+      <tr><td><b>Fire on the Frontier</b></td><td>4 historical + 2 generic</td>
+        <td>The Great Swamp Fight · The Battle of Hudson's Bay · Ambush · Total War. <i>The remaining two historical land scenario names aren't published anywhere public.</i></td></tr>
+      <tr><td><b>Pillage &amp; Plunder: Spoils of War</b></td><td>2026 expansion</td>
+        <td>Contents not yet enumerated publicly.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Buying without US shipping</h3>
+  <p>All the books sell as PDFs direct from Firelock — no postage, no customs. Core + <i>No Peace Beyond
+  the Line</i> ran about $35 together. For physical copies, UK/EU stockists carry the range:
+  <a href="https://www.waylandgames.co.uk/blood-plunder-revised-edition-fgd-0132">Wayland Games</a> ·
+  <a href="https://elementgames.co.uk/wargames-and-miniatures/cult-steampunk-other-miniatures-games/blood-and-plunder">Element Games</a> ·
+  <a href="https://geekvillain.co.uk/products/longboat-ship">Geek Villain</a> ·
+  <a href="https://www.incomgaming.co.uk/collections/blood-and-plunder">Incom Gaming</a> ·
+  <a href="https://entoyment.co.uk/collections/blood-plunder">Entoyment</a>.</p>
+
+  <h3>Known gaps in this document</h3>
+  <ul>
+    <li><b>Deployment diagrams are images</b> and could not be reproduced. Several scenarios say "as shown" — for those, the source PDF is essential, not optional.</li>
+    <li><b>Escort</b> (all three variants) is an image-only scan; no rules text was recoverable.</li>
+    <li><b>The Ghost Ship</b> is missing its movement and Fatigue tables for the same reason.</li>
+    <li><b>Ambush</b> (Raise the Black, Land) was only ever shared as a photograph of a book page — no text exists online.</li>
+    <li>2024 and 2023 scenarios <b>specify no points values or player counts</b>; B&amp;P scenarios are point-agnostic and the campaign's weekly objectives set the size. Nothing has been invented to fill those gaps.</li>
+    <li>Two 2024 PDFs <b>disagree with their own blog posts about which book and page they come from</b> — noted inline where relevant.</li>
+    <li><b>2023 had no organized-play kit</b> and <b>2024's three kit scenarios were sold to stores</b>, never released free.</li>
+  </ul>
+
+  <p style="margin-top:22px">Compiled 21 July 2026 from Firelock Games' downloads page, the 2025 and 2026
+  Summer of Plunder kits, and Blood &amp; Pigment. Primary hubs:
+  <a href="https://firelockgames.com/pages/downloads">firelockgames.com/pages/downloads</a> ·
+  <a href="https://bloodandpigment.com/summer-of-plunder-hq/">Summer of Plunder HQ</a> ·
+  <a href="https://bloodandpigment.com/tag/scenarios/">Blood &amp; Pigment scenario articles</a>.</p>
+</footer>
+
+</div>
+<script>
+(function(){
+  const cards=[...document.querySelectorAll('.card')];
+  const btns=[...document.querySelectorAll('button.f')];
+  const q=document.getElementById('q');
+  let filter='all';
+  function apply(){
+    const term=q.value.trim().toLowerCase();
+    cards.forEach(c=>{
+      let ok=true;
+      if(filter==='official') ok = c.dataset.src==='official';
+      else if(filter!=='all') ok = c.dataset.type.split(/\s+/).includes(filter);
+      if(ok && term){
+        const hay=(c.dataset.name+' '+c.textContent).toLowerCase();
+        ok=hay.includes(term);
+      }
+      c.classList.toggle('hidden',!ok);
+    });
+    document.querySelectorAll('h2.sect').forEach(h=>{
+      let n=h.nextElementSibling, any=false;
+      while(n && n.tagName!=='H2'){ if(n.classList.contains('card') && !n.classList.contains('hidden')) any=true; n=n.nextElementSibling; }
+      h.classList.toggle('hidden',!any);
+    });
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.remove('on')); b.classList.add('on');
+    filter=b.dataset.f; apply();
+  }));
+  q.addEventListener('input',apply);
+})();
+</script>
+
+<div class="wrap">
+  <div class="backlink"><a href="index.html">&#9875; Back to Ocean's Team &#9875;</a></div>
+</div>
+
+</body>
+</html>
